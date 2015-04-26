@@ -552,9 +552,11 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 		 * @return void
 		 */		
 		function get_float_block() {	
-		
-			$options = implode( "\n", $this->options['wpglobus_translate_options'] );
-			
+
+			$options = '';
+			if ( !empty($this->options['wpglobus_translate_options']) ) {
+				$options = implode( "\n", $this->options['wpglobus_translate_options'] );
+			}
 			?>
 		
 			<div class="float-block">
