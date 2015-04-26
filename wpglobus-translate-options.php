@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WPGlobus Translate Options
  * Plugin URI: https://github.com/WPGlobus/wpglobus-translate-options
- * Description: for <a href="https://wordpress.org/plugins/wpglobus/">WPGlobus</a>.
+ * Description: Translate options from wp_options table for <a href="https://wordpress.org/plugins/wpglobus/">WPGlobus</a>.
  * Version: 1.0.0
  * Author: WPGlobus
  * Author URI: http://www.wpglobus.com/
