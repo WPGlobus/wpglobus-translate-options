@@ -6,7 +6,7 @@
 **Tested up to:** 4.2  
 **Stable tag:** trunk  
 **License:** GPLv2
-**License URI:** https://github.com/WPGlobus/wpglobus-translate-optoins/blob/master/LICENSE  
+**License URI:** https://github.com/WPGlobus/wpglobus-translate-options/blob/master/LICENSE  
 
 ## Description ##
 
@@ -17,7 +17,7 @@
 ### More info ###
 
 * [WPGlobus Translate Options home page](http://www.wpglobus.com/add-ons/wpglobus-translate-options/).
-* [GitHub code repository](https://github.com/WPGlobus/wpglobus-translate-optoins).
+* [GitHub code repository](https://github.com/WPGlobus/wpglobus-translate-options).
 
 ## Installation ##
 
@@ -36,7 +36,7 @@ Alternatively, see the guide to [Manually Installing Plugins](http://codex.wordp
 
 We appreciate all contributions, ideas, critique, and help.
 
-* To speed up our development, please report bugs, with reproduction steps on [WPGlobus Translate Options GitHub](https://github.com/WPGlobus/wpglobus-translate-optoins).
+* To speed up our development, please report bugs, with reproduction steps on [WPGlobus Translate Options GitHub](https://github.com/WPGlobus/wpglobus-translate-options).
 * Plugin and theme authors: please try WPGlobus Translate Options and let us know if you find any compatibility problems.
 * Contact us directly on [WPGlobus.com](http://www.wpglobus.com/contact-us/).
 
@@ -46,8 +46,8 @@ Please check out the [WPGlobus Website](http://www.wpglobus.com/add-ons/wpglobus
 
 ## Screenshots ##
 
-### 1. Plugin interface. ###
-![Plugin interface.](https://raw.githubusercontent.com/WPGlobus/wpglobus-translate-options/master/assets/screenshot-2.png)
+### 1. Plugin admin interface. ###
+![Plugin admin interface.](https://raw.githubusercontent.com/WPGlobus/wpglobus-translate-options/master/assets/screenshot-2.png)
 
 
 ## Changelog ##
