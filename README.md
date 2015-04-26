@@ -12,7 +12,7 @@
 
 **WPGlobus Translate Options** is an extension to the WPGlobus plugin. It allows translate options from wp_options table.
 
-> **NOTE:** You need to install and activate the [WPGlobus Multilingual Plugin](https://wordpress.org/plugins/wpglobus/) before installing the WPGlobus Translate Options extension.
+> **NOTE:** You need to install and activate the [WPGlobus Multilingual Plugin](https://wordpress.org/plugins/wpglobus/) version 1.0.11 or later before installing the WPGlobus Translate Options extension.
 
 ### More info ###
 
