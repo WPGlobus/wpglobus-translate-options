@@ -1,0 +1,15 @@
+.translate_options-wrap ul {
+	margin-left:20px;
+}
+.translate_options-wrap li {
+	margin: 10px 0 10px;
+}
+.translate_options-wrap  .settings-page, 
+.translate_options-wrap  .about-page {
+	margin: 20px;
+}
+.fixed-block {
+    position: fixed;
+    top: 32px;
+    z-index: 9999;
+}

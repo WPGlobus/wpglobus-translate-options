@@ -1,0 +1,15 @@
+wpglobus_
+aioseop_
+wpseo
+theme_mods_
+theme_switched
+widget_
+acf
+jetpack_
+pa_
+woocommerce_
+redux
+p3
+wpcf
+_wpcf
+woothemes-our-team-
