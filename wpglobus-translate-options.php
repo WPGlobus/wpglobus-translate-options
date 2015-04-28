@@ -29,14 +29,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'WPGLOBUS_TRANSLATE_OPTIONS_VERSION', '1.0.0' );
 
-add_filter( 'wpglobus_option_sections', 'wpglobus_add_options_section' );		
+add_filter( 'wpglobus_option_sections', 'wpglobus_add_options_section' );
 /**
  * Filter the value of an option.
  * @see filter wpglobus_option_sections
  *
  * @since 1.0.0
  *
- * @param array $options Array of the options.
+ * @param array $sections Array of the options.
  * @return array
  */
 function wpglobus_add_options_section( $sections ) {
@@ -49,7 +49,7 @@ function wpglobus_add_options_section( $sections ) {
 			array(
 				'id'       => 'translate_options_link',
 				'type'     => 'info',
-				'title'    => 'Click for open <a href="admin.php?page=wpglobus-translate-options">Translate options page</a>',
+				'title'    => 'Click to open <a href="admin.php?page=wpglobus-translate-options">Translate options page</a>',
 				'style'    => 'info',
 			)
 
@@ -71,6 +71,7 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 	
 	/**
 	 * WPGlobus_Translate_Options
+	 * @todo Move to a separate file
 	 */
 	class WPGlobus_Translate_Options {
 
@@ -319,8 +320,12 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 			/** @global string $pagenow */
 			global $pagenow;
 			
-			/** @global string $wpdb */
+			/** @global wpdb $wpdb */
 			global $wpdb;
+
+			/** @todo These two vars are set inside a condition. Should refactor. */
+			$page = '';
+			$option = false;
 
 			$tab_active = array();
 			$tab_active[self::TRANSLATE_OPTIONS_PAGE] = '';
@@ -570,13 +575,18 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 			</div>		<?php
 			
 		}
-		
+
 		/**
 		 * Get item
-		 *
 		 * @since 1.0.0
+		 *
+		 * @param string $key
+		 * @param string|array|object $items // TODO this is a code smell
+		 * @param string $option
+		 * @param string $chain
+		 *
 		 * @return string
-		 */			
+		 */
 		function get_item($key, $items, $option='', $chain='') {
 
 			if ( '' == $chain ) {
