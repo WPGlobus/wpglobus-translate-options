@@ -524,21 +524,28 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 					break;
 					
 					case self::ABOUT_PAGE :
+						/**
+						 * @todo Store these texts in options (self-demo)
+						 */
 						?>
-						<div class="about-page">
-						
-							<p>
-							При разработке плагина WPGlobus учитывался фактор быстродействия, поэтому для разбора языковых меток были использованы<br />
-							всего 2 фильтра для опций 'blogdescription' и 'blogname' из таблицы 'wp_options'.
-							</p>
-							<p>
-							При работе возникает необходимость использовать фильтры и для других опций.<br /> 
-							Плагин  WPGlobus Translate Options позволяет добавить те опции, которые нужно выводить, разобрав текст по языковым меткам.<br />
-							Для примера можно взять тему <a href="https://wordpress.org/themes/ample/">Ample</a> из репозитория. Она имеет встроенный слайдер,<br />
-							в настройках которого можно добаить текст для наложения на слайды. Если затем указать опцию 'ample' в разделе Options for translate,<br />
-							то текст будет выведен на слайдах согласно согласно выбранному языку.
-							</p>
-						
+						<div class="about-page" style="max-width: 30em;">
+							<?php if ( 'ru' === WPGlobus::Config()->language ) { ?>
+								<!--@formatter:off-->
+<p>
+При разработке плагина WPGlobus учитывался фактор быстродействия, поэтому для разбора языковых меток были использованы всего 2 фильтра для опций 'blogdescription' и 'blogname' из таблицы 'wp_options'.</p>
+<p>
+При работе возникает необходимость использовать фильтры и для других опций. Плагин WPGlobus Translate Options позволяет добавить те опции, которые нужно выводить, разобрав текст по языковым меткам.</p>
+<p>
+Для примера можно взять тему <a href="https://wordpress.org/themes/ample/" target="_blank">Ample</a> из репозитория. Она имеет встроенный слайдер, в настройках которого можно добавить текст для наложения на слайды. Если затем указать опцию 'ample' в разделе Options for translate, то текст будет выведен на слайдах согласно согласно выбранному языку.
+</p>
+<!--@formatter:on-->
+						<?php } else { ?>
+								<!--@formatter:off-->
+<p>In the WPGlobus core plugin, we are keeping the amount of filters as low as possible, to minimize the potential performance hit. Therefore, only two WordPress options, 'blogdescription' and 'blogname' are supported by default.</p>
+<p>Sometimes, it is necessary to allow multiple languages in other options. For instance, the slider used in the <a href="https://wordpress.org/themes/ample/" target="_blank">Ample</a> theme stores the textual overlays in the options table. With the WPGlobus Translate Options plugin, all you need is to add 'ample' into the Options for translate, and all the slider texts will be multilingual!
+</p>
+<!--@formatter:on-->
+						<?php } ?>
 						</div>
 						<?php
 					break;
@@ -615,13 +622,15 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 
 			return $return;
 		}
-		
+
 		/**
 		 * Convert string
-		 *
 		 * @since 1.0.0
+		 *
+		 * @param string $str
+		 *
 		 * @return string
-		 */		
+		 */
 		function convert($str) {
 			$r = '';
 			$arr = explode('+', $str);
