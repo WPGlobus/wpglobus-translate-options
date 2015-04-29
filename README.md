@@ -51,7 +51,9 @@ Please check out the [WPGlobus Website](http://www.wpglobus.com/add-ons/wpglobus
 
 
 ## Changelog ##
+
 ### 1.0.1 ###
 * Some css updates
+
 ### 1.0.0 ###
 * Initial release
