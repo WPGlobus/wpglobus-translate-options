@@ -46,7 +46,8 @@ Please check out the [WPGlobus Website](http://www.wpglobus.com/add-ons/wpglobus
 
 == Screenshots ==
 
-1.
+1. Menu item.
+2. WPGlobus Translate Options interface.
 
 == Changelog ==
 	
