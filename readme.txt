@@ -48,8 +48,12 @@ Please check out the [WPGlobus Website](http://www.wpglobus.com/add-ons/wpglobus
 
 1. Menu item.
 2. WPGlobus Translate Options interface.
+3. Interface to add option for translation.
 
 == Changelog ==
-	
+
+= 1.0.1 =
+* Some css updates
+
 = 1.0.0 =
 * Initial release

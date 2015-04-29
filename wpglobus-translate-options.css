@@ -13,3 +13,10 @@
     top: 32px;
     z-index: 9999;
 }
+.translate_options-wrap h3{
+	margin-left:20px;
+}
+.translate_options-wrap h3 span:before {
+	content: "\f504";
+    font-family: 'dashicons';
+}

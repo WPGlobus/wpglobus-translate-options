@@ -3,7 +3,7 @@
  * Plugin Name: WPGlobus Translate Options
  * Plugin URI: https://github.com/WPGlobus/wpglobus-translate-options
  * Description: Translate options from wp_options table for <a href="https://wordpress.org/plugins/wpglobus/">WPGlobus</a>.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: WPGlobus
  * Author URI: http://www.wpglobus.com/
  * Network: false
@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'WPGLOBUS_TRANSLATE_OPTIONS_VERSION', '1.0.0' );
+define( 'WPGLOBUS_TRANSLATE_OPTIONS_VERSION', '1.0.1' );
 
 add_filter( 'wpglobus_option_sections', 'wpglobus_add_options_section' );
 /**
@@ -428,7 +428,7 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 						
 							?>
 							
-							<h3><a href="#" class="wpglobus-translate" title="Click to add translation list" data-source="<?php echo $option; ?>"><?php echo $option; ?></a></h3>	
+							<h3><a href="#" class="wpglobus-translate" title="Click to add translation list" data-source="<?php echo $option; ?>"><?php echo $option; ?><span></span></a></h3>	
 							
 							<?php
 							
