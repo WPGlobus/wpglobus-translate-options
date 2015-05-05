@@ -1,6 +1,6 @@
 {
   "name": "wpglobus-translate-options",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "title": "WPGlobus Translate Options",
   "description": "WPGlobus Translate Options is an extension to the WPGlobus plugin. It allows translate options from wp_options table.",
   "main": "Gruntfile.js",

@@ -3,7 +3,7 @@
  * Plugin Name: WPGlobus Translate Options
  * Plugin URI: https://github.com/WPGlobus/wpglobus-translate-options
  * Description: Translate options from wp_options table for <a href="https://wordpress.org/plugins/wpglobus/">WPGlobus</a>.
- * Version: 1.0.1
+ * Version: 1.1.0
  * Author: WPGlobus
  * Author URI: http://www.wpglobus.com/
  * Network: false
@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'WPGLOBUS_TRANSLATE_OPTIONS_VERSION', '1.0.1' );
+define( 'WPGLOBUS_TRANSLATE_OPTIONS_VERSION', '1.1.0' );
 
 add_filter( 'wpglobus_option_sections', 'wpglobus_add_options_section' );
 /**
@@ -128,7 +128,7 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 		var $keys = array();
 		
 		/**
-		 *
+		 * @var string from multidimensional array assembled by + sign
 		 */
 		var $order = '';	
 	
@@ -164,7 +164,6 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 				if ( !empty($this->options['wpglobus_translate_options']) ) :
 			
 					foreach ( $this->options['wpglobus_translate_options'] as $option ) {
-					
 						$keys = explode('+', $option );
 						
 						$this->keys[] = $keys;
@@ -220,23 +219,27 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 
 			}	*/
 
-			foreach( $options as $key=>$value ) {
-				
-				if ( is_array($value) ) {
-					$options[$key] = $this->on_translate_option($value);
-				} else {	
-					$options[$key] = WPGlobus_Core::text_filter($value, WPGlobus::Config()->language);	
+			if ( is_array($options) ) {	
+				foreach( $options as $key=>$value ) {
+					
+					if ( is_array($value) ) {
+						$options[$key] = $this->on_translate_option($value);
+					} else {	
+						$options[$key] = WPGlobus_Core::text_filter($value, WPGlobus::Config()->language);	
+					}
+
+					/** @todo for next versions with translation individual fields */
+					/*
+					if ( !empty($translating_keys) && in_array($key, $translating_keys) ) {
+						$options[$key] = WPGlobus_Core::text_filter($value, WPGlobus::Config()->language);	
+					}
+					*/
+
 				}
-
-				/** @todo for next versions with translation individual fields */
-				/*
-				if ( !empty($translating_keys) && in_array($key, $translating_keys) ) {
-					$options[$key] = WPGlobus_Core::text_filter($value, WPGlobus::Config()->language);	
-				}
-				*/
-
-			}			
-
+			} elseif ( is_string($options) ) {	
+				$options = WPGlobus_Core::text_filter($options, WPGlobus::Config()->language);	
+			}
+			
 			return $options;
 			
 		}
@@ -445,7 +448,7 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 										echo $this->get_item($key, $items, $option);
 									endforeach;
 								} else {
-									echo $this->get_item($option, $data, $option);
+									echo $this->get_item($option, $data, false);
 								}	
 							} ?> </td>
 							<td style="vertical-align:top;width:30%;">
@@ -595,13 +598,17 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 		 * @return string
 		 */
 		function get_item($key, $items, $option='', $chain='') {
-
-			if ( '' == $chain ) {
-				$this->order = '+' . $key;
-				$chain = $key;
+	
+			if ( false === $option ) {
+				// do nothing
 			} else {
-				$this->order = '+' .$chain . '+' . $key;
-				$chain .= '+' . $key;
+				if ( '' == $chain ) {
+					$this->order = '+' . $key;
+					$chain = $key;
+				} else {
+					$this->order = '+' .$chain . '+' . $key;
+					$chain .= '+' . $key;
+				}
 			}
 
 			$return  = '<ul>';
@@ -612,10 +619,16 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 					$return .= $this->get_item($k, $v, $option, $chain);
 				}	
 			} else {
-				if ( ! empty($items) )  {
+				if ( empty($items) )  {
+					$items = '<textarea readonly cols="100"></textarea>';
+				} else {
 					$items = '<textarea readonly cols="100">' . $items . '</textarea>';
 				}	
-				$return .= $this->convert($option . $this->order) . $items;
+				if ( false === $option ) {	
+					$return .= $this->convert($key) . $items;
+				} else {	
+					$return .= $this->convert($option . $this->order) . $items;
+				}	
 			}
 			$return .= '</li>';
 			$return .= '</ul>';

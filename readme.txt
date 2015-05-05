@@ -52,6 +52,10 @@ Please check out the [WPGlobus Website](http://www.wpglobus.com/add-ons/wpglobus
 
 == Changelog ==
 
+= 1.1.0 =
+* Some interface improvements
+* Working correctly with string type options
+
 = 1.0.1 =
 * Some css updates
 
