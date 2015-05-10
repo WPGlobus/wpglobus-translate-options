@@ -3,7 +3,7 @@
  * Plugin Name: WPGlobus Translate Options
  * Plugin URI: https://github.com/WPGlobus/wpglobus-translate-options
  * Description: Translate options from wp_options table for <a href="https://wordpress.org/plugins/wpglobus/">WPGlobus</a>.
- * Version: 1.1.0
+ * Version: 1.2.0
  * Author: WPGlobus
  * Author URI: http://www.wpglobus.com/
  * Network: false
@@ -27,7 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'WPGLOBUS_TRANSLATE_OPTIONS_VERSION', '1.1.0' );
+define( 'WPGLOBUS_TRANSLATE_OPTIONS_VERSION', '1.2.0' );
 
 add_filter( 'wpglobus_option_sections', 'wpglobus_add_options_section' );
 /**
@@ -428,32 +428,46 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 					switch( $page ) :
 					case self::TRANSLATE_OPTIONS_PAGE :
 						if ( $option ) {
-						
+							
+							global $wpdb;
+							
+							$show_source = false;
+							if ( isset( $_GET['source'] ) && 'true' == $_GET['source'] ) {
+								$show_source = true;
+							}
 							?>
 							
-							<h3><a href="#" class="wpglobus-translate" title="Click to add translation list" data-source="<?php echo $option; ?>"><?php echo $option; ?><span></span></a></h3>	
-							
+							<h3><a href="#" class="wpglobus-translate" title="Click to add translation list" data-source="<?php echo $option; ?>"><?php echo $option; ?><span></span></a></h3>
 							<?php
-							
-							$data = get_option( $option ); 
-							
+							if ( $show_source ) { ?>
+								<h4><a href="?page=<?php echo self::TRANSLATE_OPTIONS_PAGE . '&option=' . $option; ?>">back</a></h4>	<?php
+								$data = $wpdb->get_var("SELECT option_value FROM $wpdb->options WHERE option_name='$option'");
+							} else {  	?>
+								<h4><a href="?page=<?php echo self::TRANSLATE_OPTIONS_PAGE . '&option=' . $option . '&source=true'; ?>">source</a></h4>	<?php
+								$data = get_option( $option );
+							}
 							?>
 							<table class="" style="width:100%">
 							<tbody><tr>
 								<td style="width:70%;">
 								<?php
-							if ( $data ) {
-								if ( is_array($data) || is_object($data) ) {
-									foreach ($data as $key=>$items) :
-										echo $this->get_item($key, $items, $option);
-									endforeach;
-								} else {
-									echo $this->get_item($option, $data, false);
-								}	
-							} ?> </td>
-							<td style="vertical-align:top;width:30%;">
-								<?php $this->get_float_block(); ?>
-							</td>
+									if ( $show_source ) { ?>
+										<textarea readonly cols="100" rows="20"><?php echo $data; ?></textarea><?php
+									} else {	
+										if ( $data ) {
+											if ( is_array($data) || is_object($data) ) {
+												foreach ($data as $key=>$items) :
+													echo $this->get_item($key, $items, $option);
+												endforeach;
+											} else {
+												echo $this->get_item($option, $data, false);
+											}	
+										}
+									}	
+								?></td>
+								<td style="vertical-align:top;width:30%;">
+									<?php $this->get_float_block(); ?>
+								</td>
 							</tr>
 							</tbody>
 							</table>

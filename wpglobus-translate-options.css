@@ -13,7 +13,7 @@
     top: 32px;
     z-index: 9999;
 }
-.translate_options-wrap h3{
+.translate_options-wrap h3, .translate_options-wrap h4{
 	margin-left:20px;
 }
 .translate_options-wrap h3 span:before {
