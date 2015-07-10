@@ -1,0 +1,19 @@
+{
+  "name": "wpglobus/wpglobus-translate-options",
+  "type": "wordpress-plugin",
+  "description": "WPGlobus - Translate Options",
+  "keywords": ["WordPress","multilingual"],
+  "homepage": "https://github.com/WPGlobus/wpglobus-translate-options",
+  "license": "GPL-2.0",
+  "authors": [
+    {
+      "name": "The WPGlobus Team",
+      "email": "support@wpglobus.com",
+      "homepage": "http://www.wpglobus.com/",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.0"
+  }
+}
