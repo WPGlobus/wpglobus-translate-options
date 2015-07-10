@@ -2,7 +2,7 @@
   "name": "wpglobus/wpglobus-translate-options",
   "type": "wordpress-plugin",
   "description": "WPGlobus - Translate Options",
-  "keywords": ["WordPress","multilingual"],
+  "keywords": ["WordPress","multilingual","translate"],
   "homepage": "https://github.com/WPGlobus/wpglobus-translate-options",
   "license": "GPL-2.0",
   "authors": [
