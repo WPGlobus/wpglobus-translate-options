@@ -255,7 +255,9 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 		function check_masks($option) {
 
 			foreach($this->disabled_masks as $mask) {
-				
+				if ( empty($mask) ) {
+					continue;
+				}	
 				if ( 0 === strpos($option, $mask) ) {
 					return true;	
 				}	
