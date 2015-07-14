@@ -52,6 +52,9 @@ Please check out the [WPGlobus Website](http://www.wpglobus.com/add-ons/wpglobus
 
 ## Changelog ##
 
+### 1.2.1 ###
+* Fixed warning Empty needle
+
 ### 1.2.0 ###
 * Added ability to see source of option
 
