@@ -41,7 +41,7 @@ We appreciate all contributions, ideas, critique, and help.
 
 = More info? =
 
-Please check out the [WPGlobus Website](http://www.wpglobus.com/add-ons/wpglobus-translate-options/) for additional information.
+Please check out the [WPGlobus Website](http://www.wpglobus.com/extensions-archive/extension-translate-options-archive/) for additional information.
 
 == Screenshots ==
 
