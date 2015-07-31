@@ -16,7 +16,7 @@ License URI: https://github.com/WPGlobus/wpglobus-translate-options/blob/master/
 
 = More info =
 
-* [WPGlobus Translate Options home page](http://www.wpglobus.com/add-ons/wpglobus-translate-options/).
+* [WPGlobus Translate Options home page](http://www.wpglobus.com/extensions-archive/extension-translate-options-archive/).
 * [GitHub code repository](https://github.com/WPGlobus/wpglobus-translate-options).
 
 == Installation ==
