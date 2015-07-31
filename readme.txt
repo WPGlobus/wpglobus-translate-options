@@ -51,6 +51,9 @@ Please check out the [WPGlobus Website](http://www.wpglobus.com/extensions-archi
 
 == Changelog ==
 
+= 1.2.2 =
+* Fixed Redux fields renamed as wpglobus_...
+
 = 1.2.1 =
 * Fixed warning Empty needle
 
