@@ -48,7 +48,7 @@ function wpglobus_add_options_section( $sections ) {
 		'fields' => array(
 			array(
 				'id'       => 'translate_options_link',
-				'type'     => 'info',
+				'type'     => version_compare( WPGLOBUS_VERSION, '1.2.2', '>=' ) ? 'wpglobus_info' : 'info',
 				'title'    => 'Click to open <a href="admin.php?page=wpglobus-translate-options">Translate options page</a>',
 				'style'    => 'info',
 			)
