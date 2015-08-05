@@ -1,7 +1,6 @@
 wpglobus_
 aioseop_
 wpseo
-theme_mods_
 theme_switched
 widget_
 acf
