@@ -3,7 +3,7 @@
 **Donate link:** http://www.wpglobus.com/  
 **Tags:** globalization, i18n, international, l10n, language, localization, multilanguage, multilingual, translate, translation, WPGlobus  
 **Requires at least:** 4.0  
-**Tested up to:** 4.2  
+**Tested up to:** 4.2.4
 **Stable tag:** trunk  
 **License:** GPLv2
 **License URI:** https://github.com/WPGlobus/wpglobus-translate-options/blob/master/LICENSE  
@@ -51,6 +51,9 @@ Please check out the [WPGlobus Website](http://www.wpglobus.com/extensions-archi
 
 
 ## Changelog ##
+
+### 1.2.3 ###
+* Removed 'theme_mods_' from disabled masks
 
 ### 1.2.2 ###
 * Fixed Redux fields renamed as wpglobus_...
