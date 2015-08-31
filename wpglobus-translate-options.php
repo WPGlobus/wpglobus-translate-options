@@ -428,99 +428,155 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 					<?php
 		
 					switch( $page ) :
-					case self::TRANSLATE_OPTIONS_PAGE :
-						if ( $option ) {
+					case self::TRANSLATE_OPTIONS_PAGE :	?>
+						
+						<form method="post" id="options"> <?php
 							
-							global $wpdb;
+							$search = false;
+							if ( ! empty( $_POST['search'] ) ) {
+								$search = $_POST['search'];
+								$option = '[]';
+							}	
 							
-							$show_source = false;
-							if ( isset( $_GET['source'] ) && 'true' == $_GET['source'] ) {
-								$show_source = true;
-							}
-							?>
+							if ( $option ) {
 							
-							<h3><a href="#" class="wpglobus-translate" title="Click to add translation list" data-source="<?php echo $option; ?>"><?php echo $option; ?><span></span></a></h3>
-							<?php
-							if ( $show_source ) { ?>
-								<h4><a href="?page=<?php echo self::TRANSLATE_OPTIONS_PAGE . '&option=' . $option; ?>">back</a></h4>	<?php
-								$data = $wpdb->get_var("SELECT option_value FROM $wpdb->options WHERE option_name='$option'");
-							} else {  	?>
-								<h4><a href="?page=<?php echo self::TRANSLATE_OPTIONS_PAGE . '&option=' . $option . '&source=true'; ?>">source</a></h4>	<?php
-								$data = get_option( $option );
-							}
-							?>
-							<table class="" style="width:100%">
-							<tbody><tr>
-								<td style="width:70%;">
-								<?php
-									if ( $show_source ) { ?>
-										<textarea readonly cols="100" rows="20"><?php echo $data; ?></textarea><?php
-									} else {	
-										if ( $data ) {
-											if ( is_array($data) || is_object($data) ) {
-												foreach ($data as $key=>$items) :
-													echo $this->get_item($key, $items, $option);
-												endforeach;
-											} else {
-												echo $this->get_item($option, $data, false);
-											}	
-										}
-									}	
-								?></td>
-								<td style="vertical-align:top;width:30%;">
-									<?php $this->get_float_block(); ?>
-								</td>
-							</tr>
-							</tbody>
-							</table>
-							<?php	
-						} else {
-							
-							$filename = plugin_dir_path( __FILE__ ) . 'options.txt';
-
-							if ( file_exists($filename) ) {
-							
-								$data = file($filename);
+								$show_source = false;
+								if ( isset( $_GET['source'] ) && 'true' == $_GET['source'] ) {
+									$show_source = true;
+								}
 								
-								if ( false !== $data ) {
+								$option_names = array();
+								if ( $search ) {
 									
-									$r = implode( ',', $data );
-									$r = str_replace(array("\r", "\n"), '', $r);
+									$show_source = true;
+									$results = $wpdb->get_results( 
+										"SELECT option_name FROM $wpdb->options WHERE option_value LIKE '%$search%' AND option_name NOT LIKE '_%transient%' ORDER BY option_name ASC" );
 									
-									$this->disabled_options = explode(',', $r);
+									foreach( $results as $opt_obj ) {
+										$option_names[] = $opt_obj->option_name;	
+									}	
 									
-									$options = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}options AS opt WHERE opt.option_name NOT LIKE '_%transient%' ORDER BY opt.option_name ASC" );
-									?>
-									<table class="" style="width:100%">
+								} else {
+									$option_names[] = $option;	
+								}	
+								
+								if ( empty($option_names) ) : ?>
+									<h4>Not found</h4> <?php
+								else :
+									foreach( $option_names as $option ) :
+										?>
+										
+										<h3><a href="#" class="wpglobus-translate" title="Click to add translation list" data-source="<?php echo $option; ?>"><?php echo $option; ?><span></span></a></h3>
+										<?php
+										if ( $show_source ) { ?>
+											<h4><a href="?page=<?php echo self::TRANSLATE_OPTIONS_PAGE . '&option=' . $option; ?>">back</a></h4>	<?php
+											$data = $wpdb->get_var("SELECT option_value FROM $wpdb->options WHERE option_name='$option'");
+										} else {  	?>
+											<h4><a href="?page=<?php echo self::TRANSLATE_OPTIONS_PAGE . '&option=' . $option . '&source=true'; ?>">source</a></h4>	<?php
+											$data = get_option( $option );
+										}
+										?>
+										<table class="" style="width:100%">
 										<tbody><tr>
-										<td style="width:70%;"> <?php									
+											<td style="width:70%;">
+											<?php
+												if ( $show_source ) { 
 
-											echo '<ul>';
-											foreach( $options as $option ) {
-
-												if ( ! in_array( $option->option_name, $this->disabled_options ) ) {
+													if ( $search ) {
+														$data = preg_split( '/'.$search.'/ui', $data );
+														$output = $data[0];
+													} else {
+														$output = $data;		
+													}	
+													if ( sizeof($data) == 1 ) { ?>
+														<div class="textarea"><pre><?php echo htmlspecialchars($output); ?></pre></div>	<?php
+													} else { ?>
+														<div class="textarea"> <?php
+															for( $i=0; $i < sizeof($data); $i++ ) { ?>
+																<pre style="margin-bottom:0;"><?php echo htmlspecialchars($data[$i]); ?></pre> <?php
+																if ( ! empty( $data[$i+1] ) ) { ?>
+																	<span style="background-color:#0f0;"><?php echo $search; ?></span>
+																	<pre style="margin-top:0;"><?php echo htmlspecialchars($data[$i+1]); ?></pre>	<?php
+																}	
+																$i++;
+															} 	?>	
+														</div>	<?php
+													}
 													
-													if ( ! $this->check_masks($option->option_name) ) {
-														echo '<li><a href="?page=' . self::TRANSLATE_OPTIONS_PAGE . '&option=' . $option->option_name . '">' . $option->option_name . '</a></li>';
+												} else {	
+													if ( $data ) {
+														if ( is_array($data) || is_object($data) ) {
+															foreach ($data as $key=>$items) :
+																echo $this->get_item($key, $items, $option);
+															endforeach;
+														} else {
+															echo $this->get_item($option, $data, false);
+														}	
+													}
+												}	
+											?></td>
+											<td style="vertical-align:top;width:30%;">
+												<?php $this->get_float_block(); ?>
+											</td>
+										</tr>
+										</tbody>
+										</table>
+										<?php	
+									endforeach;
+								endif;
+							} else {
+								
+								$filename = plugin_dir_path( __FILE__ ) . 'options.txt';
+
+								if ( file_exists($filename) ) {
+								
+									$data = file($filename);
+									
+									if ( false !== $data ) { ?>
+										
+										<div class="search">Enter for search in options: <input id="search" size="40" name="search" value="" /> 
+										<input type="submit" value="Search" /></div> <?php
+										
+										$r = implode( ',', $data );
+										$r = str_replace(array("\r", "\n"), '', $r);
+										
+										$this->disabled_options = explode(',', $r);
+										
+										$options = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}options AS opt WHERE opt.option_name NOT LIKE '_%transient%' ORDER BY opt.option_name ASC" );
+										?>
+										<table class="" style="width:100%">
+											<tbody><tr>
+											<td style="width:70%;"> <?php									
+
+												echo '<ul>';
+												foreach( $options as $option ) {
+
+													if ( ! in_array( $option->option_name, $this->disabled_options ) ) {
+														
+														if ( ! $this->check_masks($option->option_name) ) {
+															echo '<li><a href="?page=' . self::TRANSLATE_OPTIONS_PAGE . '&option=' . $option->option_name . '">' . $option->option_name . '</a></li>';
+														}
+														
 													}
 													
 												}
-												
-											}
-											echo '</ul>'; ?> 
-										</td>
-										<td style="vertical-align:top;width:30%;">
-											<?php $this->get_float_block(); ?>
-										</td>
-										</tr>
-										</tbody>
+												echo '</ul>'; ?> 
+											</td>
+											<td style="vertical-align:top;width:30%;">
+												<?php $this->get_float_block(); ?>
+											</td>
+											</tr>
+											</tbody>
 										</table> <?php										
 
-								}
-								
-							}	
-						
-						} 	// endif $option; 
+									}
+									
+								}	
+							
+							} 	// endif $option; ?>
+							
+						</form>	<!-- #options --><?php
+							
 					break;
 						
 					case self::SETTINGS_PAGE :
@@ -591,13 +647,11 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 			?>
 		
 			<div class="float-block">
-				<form method="post">
-					Options for translate<br />
-					<textarea cols="40" rows="20" name="wpglobus_translate_options" id="wpglobus_translate_options"><?php echo $options; ?></textarea>
-					<br />
-					<input type="hidden" name="wpglobus_translate_form" value="" />
-					<input type="submit" value="Save" />
-				</form>	
+				Options for translate<br />
+				<textarea cols="40" rows="20" name="wpglobus_translate_options" id="wpglobus_translate_options"><?php echo $options; ?></textarea>
+				<br />
+				<input type="hidden" name="wpglobus_translate_form" value="" />
+				<input type="submit" value="Save" />
 			</div>		<?php
 			
 		}
