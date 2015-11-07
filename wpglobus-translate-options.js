@@ -18,7 +18,7 @@ jQuery(document).ready(function($) {
 
 		init : function() {
 			
-			api.setFloatBlock(150);
+			api.setFloatBlock( $('h2.nav-tab-wrapper').offset().top );
 			
 			$('.wpglobus-translate').on('click', function(event){
 				
