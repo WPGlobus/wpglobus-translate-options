@@ -51,6 +51,11 @@ Please check out the [WPGlobus Website](http://www.wpglobus.com/extensions-archi
 
 == Changelog ==
 
+= 1.3.1 =
+* Fixed jumping "options to translate" block
+* Better English texts
+* Added 3 masks into exclude list
+
 = 1.3.0 =
 * Added search in options
 
