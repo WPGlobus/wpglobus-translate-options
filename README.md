@@ -3,7 +3,7 @@
 **Donate link:** http://www.wpglobus.com/  
 **Tags:** globalization, i18n, international, l10n, language, localization, multilanguage, multilingual, translate, translation, WPGlobus  
 **Requires at least:** 4.0  
-**Tested up to:** 4.3.1
+**Tested up to:** 4.4
 **Stable tag:** trunk  
 **License:** GPLv2
 **License URI:** https://github.com/WPGlobus/wpglobus-translate-options/blob/master/LICENSE  
