@@ -158,7 +158,19 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 					$this,
 					'on_admin_scripts'
 				) );
-				
+			
+				global $pagenow;
+				if ( 'customize.php' === $pagenow ) {
+
+					//if ( version_compare( $wp_version, '4.5.0', '<=' ) ) {
+						require_once 'includes/customize-options-wp44.php';
+						WPGlobus_TO_Customize_Options::controller( self::TRANSLATE_OPTIONS_PAGE );
+					//} else {	
+						//require_once 'includes/customize-options-wp45.php';	
+					//}	
+
+				}	
+			
 			} else {
 			
 				if ( !empty($this->options['wpglobus_translate_options']) ) :
@@ -239,7 +251,7 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 			} elseif ( is_string($options) ) {	
 				$options = WPGlobus_Core::text_filter($options, WPGlobus::Config()->language);	
 			}
-			
+		
 			return $options;
 			
 		}
