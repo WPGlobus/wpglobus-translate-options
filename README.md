@@ -52,6 +52,9 @@ Please check out the [WPGlobus Website](http://www.wpglobus.com/extensions-archi
 
 ## Changelog ##
 
+### 1.4.0 ###
+* Added section to Customizer
+
 ### 1.3.1 ###
 * Fixed jumping "options to translate" block
 * Better English texts
