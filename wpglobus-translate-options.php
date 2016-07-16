@@ -159,6 +159,11 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 					'on_admin_scripts'
 				) );
 			
+				add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array(
+					$this,
+					'filter__plugin_action_links'
+				) );			
+			
 				global $pagenow;
 				if ( 'customize.php' === $pagenow ) {
 
@@ -192,6 +197,20 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 
 		}
 
+		/**
+		 * Add a link to the settings page to the plugins list.
+		 * @since 1.4.1
+		 *
+		 * @param array $links array of links for the plugins, adapted when the current plugin is found.
+		 *
+		 * @return array $links
+		 */		
+		function filter__plugin_action_links( $links ) {
+			$settings_link = '<a class="dashicons-before dashicons-admin-settings" href="' . esc_url( admin_url( 'admin.php?page=' . self::TRANSLATE_OPTIONS_PAGE ) ) . '">' . esc_html__( 'Settings' ) . '</a>';
+			array_unshift( $links, $settings_link );
+			return $links;
+		}
+		
 		/**
 		 * Filter the value of an option.
 		 * @see filter 'option_' . $option in \wp-includes\option.php
