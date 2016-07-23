@@ -8,7 +8,7 @@
  * @subpackage Administration
  */
 /*jslint browser: true*/
-/*global jQuery, console, WPGlobusCore, WPGlobusCoreData, WPGlobusCustomizeOptions, WPGlobusTOCustomizer*/
+/*global jQuery, console, WPGlobusCustomizeOptions, WPGlobusTOCustomizer */
 jQuery(document).ready(function($) {
 	"use strict";
 
