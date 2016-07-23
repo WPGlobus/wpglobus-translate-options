@@ -52,6 +52,9 @@ Please check out the [WPGlobus Website](http://www.wpglobus.com/extensions-archi
 
 ## Changelog ##
 
+### 1.4.2 ###
+* Removed unused globals.
+
 ### 1.4.1 ###
 * Added a link to the settings page to the plugins list.
 
