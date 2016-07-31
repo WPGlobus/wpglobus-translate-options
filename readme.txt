@@ -10,9 +10,9 @@ License URI: https://github.com/WPGlobus/wpglobus-translate-options/blob/master/
 
 == Description ==
 
-**WPGlobus Translate Options** is an extension to the WPGlobus plugin. It allows translate options from wp_options table.
+**WPGlobus Translate Options** enables selective translation of the wp_options table strings. You need to use it when your theme or a 3rd party plugin (a slider, for example) has its own option panel, where you enter texts.
 
-> **NOTE:** You need to install and activate the [WPGlobus Multilingual Plugin](https://wordpress.org/plugins/wpglobus/) version 1.0.11 or later before installing the WPGlobus Translate Options extension.
+> **NOTE:** Highly recommend to install this add-on immediately after [WPGlobus Multilingual Plugin](https://wordpress.org/plugins/wpglobus/) core plugin will be installed.
 
 = More info =
 
