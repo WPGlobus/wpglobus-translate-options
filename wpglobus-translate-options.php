@@ -130,7 +130,12 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 		/**
 		 * @var string from multidimensional array assembled by + sign
 		 */
-		var $order = '';	
+		var $order = '';
+		
+		/**
+		 * Tab ID for WPGlobus admin central page.
+		 */
+		protected static $central_tab_id = 'tab-translate-options';		
 	
 		/** */
 		function __construct() {
@@ -176,6 +181,38 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 
 				}	
 			
+				if ( class_exists( 'WPGlobus_Admin_Central' ) ) {
+					
+					/**
+					 * @scope admin
+					 * @since 1.4.2
+					 */		
+					/* 
+					add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array(
+						$this,
+						'filter__plugin_action_links'
+					) ); */
+					
+					/**
+					 * @scope admin
+					 * @since 1.4.2
+					 */
+					add_filter( 'wpglobus_admin_central_tabs', array(
+						$this,
+						'filter__central_tabs'
+					), 10, 2 );
+		
+					/**
+					 * @scope admin
+					 * @since 1.4.2
+					 */	
+					add_action( 'wpglobus_admin_central_panel', array(
+						$this,
+						'add__admin_central_panel'
+					) );
+				
+				}
+				
 			} else {
 			
 				if ( !empty($this->options['wpglobus_translate_options']) ) :
@@ -738,7 +775,7 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 		}
 
 		/**
-		 * Convert string
+		 * Convert string.
 		 * @since 1.0.0
 		 *
 		 * @param string $str
@@ -763,7 +800,7 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 		
 		
 		/**
-		 * Enqueue admin styles
+		 * Enqueue admin styles.
 		 *
 		 * @since 1.0.0
 		 * @return void
@@ -791,7 +828,7 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 		}	
 	
 		/**
-		 * Enqueue admin scripts
+		 * Enqueue admin scripts.
 		 *
 		 * @since 1.0.0
 		 * @return void
@@ -814,7 +851,54 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 			
 			endif;			
 			
-		}	
+		}
+		
+		/**
+		 * Add tab for WPGlobus admin central.
+		 *
+		 * @since 1.4.3
+		 */
+		function filter__central_tabs( $tabs, $link_template ) {
+
+			if ( ! empty( $tabs[ 'guide' ] ) ) {
+				unset( $tabs[ 'guide' ] );
+			}
+		
+			$tab = array(
+				'title' 		=> __( 'WPGlobus Translate Options', 'wpglobus' ),
+				'link_class' 	=> array( 'nav-tab', 'nav-tab-active' ),
+				'span_class' 	=> array( 'dashicons', 'dashicons-images-alt' ),
+				'link' 			=> $link_template,
+				'href' 			=> '#',
+				'tab_id' 		=> 'tab-translate-options'
+			);		
+			
+			array_unshift( $tabs, $tab );
+			
+			return $tabs;
+			
+		}		
+		
+		/**
+		 * Add panel for WPGlobus admin central.
+		 *
+		 * @since 1.4.3 
+		 */	
+		function add__admin_central_panel( $tabs ) {
+
+			$link = add_query_arg(
+				array(
+					'page'	 => self::TRANSLATE_OPTIONS_PAGE,
+				),
+				admin_url( 'admin.php' )
+			);		
+			
+			?>
+			<div id="<?php echo self::$central_tab_id; ?>" style="display:none;margin: 0 30px;" class="wpglobus-admin-central-tab">
+				<h4>Click to open <a href="<?php echo $link; ?>">Translate options page</a></h4>
+			</div>
+			<?php
+		}
 		
 	}
 
