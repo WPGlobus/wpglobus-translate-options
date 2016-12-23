@@ -1,0 +1,13 @@
+{
+  "text_domain": "wpglobus-post-connector",
+  "version": {
+    "define": "WPGLOBUS_TRANSLATE_OPTIONS_VERSION"
+  },
+  "path": {
+    "dist": "/var/www/u/www.wpglobus.com/dist",
+    "js": "includes/js",
+    "less": "includes/css",
+    "css": "includes/css",
+    "languages": "languages"
+  }
+}
