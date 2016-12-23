@@ -51,6 +51,9 @@ Please check out the [WPGlobus Website](http://www.wpglobus.com/extensions-archi
 
 == Changelog ==
 
+= 1.4.4 =
+* Revised code.
+
 = 1.4.3 =
 * Added Translate Options panel to WPGlobus admin central page.
 
