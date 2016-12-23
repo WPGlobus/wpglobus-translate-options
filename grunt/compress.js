@@ -15,6 +15,7 @@ module.exports = {
                 "!.gitignore",
                 "!.jshintrc",
                 "!.tx",
+                "!todo",
                 "!assets/**",
                 "!bin/**",
                 "!bower.json",
