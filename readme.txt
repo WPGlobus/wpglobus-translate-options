@@ -51,6 +51,9 @@ Please check out the [WPGlobus Website](http://www.wpglobus.com/extensions-archi
 
 == Changelog ==
 
+= 1.4.5 =
+* Revised 'option_' filter.
+
 = 1.4.4 =
 * Revised code.
 
