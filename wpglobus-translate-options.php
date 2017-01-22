@@ -2,26 +2,16 @@
 /**
  * Plugin Name: WPGlobus Translate Options
  * Plugin URI: https://github.com/WPGlobus/wpglobus-translate-options
- * Description: Translate options from wp_options table for <a href="https://wordpress.org/plugins/wpglobus/">WPGlobus</a>.
+ * Description: Translate options from 'wp_options' table for <a href="https://wordpress.org/plugins/wpglobus/">WPGlobus</a>.
  * Text Domain: wpglobus-translate-options
  * Domain Path: /languages/ 
  * Version: 1.4.4
  * Author: WPGlobus
  * Author URI: http://www.wpglobus.com/
  * Network: false
- * License: GPL2
- * Credits: Alex Gor (alexgff) and Gregory Karpinsky (tivnet)
- * Copyright 2015-2016 WPGlobus
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License, version 2, as
- * published by the Free Software Foundation.
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * Copyright 2015-2017 Alex Gor (alexgff) / WPGlobus
+ * License: GPL-3.0
+ * License URI: http://www.gnu.org/licenses/gpl.txt
  */
 
 // Exit if accessed directly
@@ -139,7 +129,9 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 		 */
 		protected static $central_tab_id = 'tab-translate-options';		
 	
-		/** */
+		/**
+		 * Constructor.
+         */
 		function __construct() {
 
 			if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
@@ -184,17 +176,7 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 				}	
 			
 				if ( class_exists( 'WPGlobus_Admin_Central' ) ) {
-					
-					/**
-					 * @scope admin
-					 * @since 1.4.2
-					 */		
-					/* 
-					add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array(
-						$this,
-						'filter__plugin_action_links'
-					) ); */
-					
+				
 					/**
 					 * @scope admin
 					 * @since 1.4.2
@@ -226,8 +208,9 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 						
 						add_filter( 'option_' . $keys[0], array(
 							$this,
-							'on_translate_option'
+							'filter__translate_option'
 						) );			
+
 					}
 				
 				endif;
@@ -251,6 +234,50 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 		}
 		
 		/**
+		 * Extract strings of current language.
+		 *
+		 * @since 1.4.5
+		 *
+		 * @param  array|string $options array or string to extract.
+		 * @return array|string
+		 */
+		public function _translate( $options ) {
+			
+			if ( is_array($options) ) {	
+			
+				foreach( $options as $key=>$value ) {
+					
+					if ( empty( $value ) ) {
+						continue;
+					}
+					
+					if ( is_array($value) ) {
+						$options[$key] = $this->_translate( $value );
+					} else {	
+						if ( WPGlobus_Core::has_translations( $value ) ) {
+							$options[$key] = WPGlobus_Core::text_filter( $value, WPGlobus::Config()->language );
+						}
+					}
+
+					/** @todo for next versions with translation individual fields */
+					/*
+					if ( !empty($translating_keys) && in_array($key, $translating_keys) ) {
+						$options[$key] = WPGlobus_Core::text_filter($value, WPGlobus::Config()->language);	
+					}
+					*/
+
+				}
+				
+			} elseif ( is_string($options) ) {	
+				if ( WPGlobus_Core::has_translations( $options ) ) {
+					$options = WPGlobus_Core::text_filter( $options, WPGlobus::Config()->language );
+				}					
+			}
+		
+			return $options;			
+		}
+		
+		/**
 		 * Filter the value of an option.
 		 * @see filter 'option_' . $option in \wp-includes\option.php
 		 *
@@ -259,7 +286,7 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 		 * @param mixed $options Value of the option.
 		 * @return mixed
 		 */
-		function on_translate_option( $options ) {
+		public function filter__translate_option( $options ) {
 			
 			if ( is_admin() || is_object($options) ) {
 				return $options;		
@@ -288,28 +315,9 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 				}	
 
 			}	*/
-
-			if ( is_array($options) ) {	
-				foreach( $options as $key=>$value ) {
-					
-					if ( is_array($value) ) {
-						$options[$key] = $this->on_translate_option($value);
-					} else {	
-						$options[$key] = WPGlobus_Core::text_filter($value, WPGlobus::Config()->language);	
-					}
-
-					/** @todo for next versions with translation individual fields */
-					/*
-					if ( !empty($translating_keys) && in_array($key, $translating_keys) ) {
-						$options[$key] = WPGlobus_Core::text_filter($value, WPGlobus::Config()->language);	
-					}
-					*/
-
-				}
-			} elseif ( is_string($options) ) {	
-				$options = WPGlobus_Core::text_filter($options, WPGlobus::Config()->language);	
-			}
-		
+			
+			$options = $this->_translate( $options );
+			
 			return $options;
 			
 		}
