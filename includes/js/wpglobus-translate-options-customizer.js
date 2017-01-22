@@ -8,7 +8,7 @@
  * @subpackage Administration
  */
 /*jslint browser: true*/
-/*global jQuery, console, WPGlobusCustomizeOptions, WPGlobusTOCustomizer */
+/*global jQuery, console, WPGlobusCustomizeOptions, WPGlobusTOCustomizer*/
 jQuery(document).ready(function($) {
 	"use strict";
 
@@ -20,7 +20,7 @@ jQuery(document).ready(function($) {
 		return;
 	}	
 
-	$( document ).on( 
+	$(document).on( 
 		'click',
 		'#accordion-panel-wpglobus_settings_panel',
 		function(ev) {
@@ -30,7 +30,7 @@ jQuery(document).ready(function($) {
 	
 	/** open Translate Options page in new tab */
 	$( '#accordion-section-' + WPGlobusCustomizeOptions.sections.wpglobus_to_section + ' .accordion-section-title' ).off( 'click keydown' );
-	$( 'body' ).on( 
+	$(document).on( 
 		'click',
 		'#accordion-section-' + WPGlobusCustomizeOptions.sections.wpglobus_to_section + ' .accordion-section-title',
 		function(ev) {
