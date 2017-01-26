@@ -52,6 +52,9 @@ Please check out the [WPGlobus Website](http://www.wpglobus.com/extensions-archi
 
 ## Changelog ##
 
+### 1.4.6 ###
+* [core] Exclude from translation the objects.
+
 ### 1.4.5 ###
 * Revised 'option_' filter.
 
