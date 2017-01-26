@@ -5,7 +5,7 @@
  * Description: Translate options from 'wp_options' table for <a href="https://wordpress.org/plugins/wpglobus/">WPGlobus</a>.
  * Text Domain: wpglobus-translate-options
  * Domain Path: /languages/ 
- * Version: 1.4.5
+ * Version: 1.4.6
  * Author: WPGlobus
  * Author URI: http://www.wpglobus.com/
  * Network: false
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'WPGLOBUS_TRANSLATE_OPTIONS_VERSION', '1.4.5' );
+define( 'WPGLOBUS_TRANSLATE_OPTIONS_VERSION', '1.4.6' );
 
 add_filter( 'wpglobus_option_sections', 'wpglobus_add_options_section' );
 /**
