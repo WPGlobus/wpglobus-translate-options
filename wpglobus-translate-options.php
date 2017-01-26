@@ -251,6 +251,13 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 						continue;
 					}
 					
+					/**
+					 * exclude from translation the objects.
+					 */
+					if ( is_object( $value ) ) {
+						continue;
+					}
+					
 					if ( is_array($value) ) {
 						$options[$key] = $this->_translate( $value );
 					} else {	
