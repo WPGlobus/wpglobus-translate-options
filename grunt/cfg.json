@@ -1,5 +1,5 @@
 {
-  "text_domain": "wpglobus-post-connector",
+  "text_domain": "wpglobus-translate-options",
   "version": {
     "define": "WPGLOBUS_TRANSLATE_OPTIONS_VERSION"
   },
