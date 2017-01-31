@@ -1,6 +1,6 @@
 # WPGlobus Translate Options #
 **Contributors:** alexgff, tivnetinc, tivnet  
-**Donate link:** http://www.wpglobus.com/  
+**Donate link:** https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SLF8M4YNZHNQN  
 **Tags:** globalization, i18n, international, l10n, language, localization, multilanguage, multilingual, translate, translation, WPGlobus  
 **Requires at least:** 4.0  
 **Tested up to:** 4.7
