@@ -4,7 +4,7 @@
     "define": "WPGLOBUS_TRANSLATE_OPTIONS_VERSION"
   },
   "path": {
-    "dist": "/var/www/u/www.wpglobus.com/dist",
+    "dist": "/var/www/u/wpglobus.com/dist",
     "js": "includes/js",
     "less": "includes/css",
     "css": "includes/css",
