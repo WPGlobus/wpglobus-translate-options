@@ -16,7 +16,7 @@
 
 ### More info ###
 
-* [WPGlobus Translate Options home page](http://www.wpglobus.com/add-ons/wpglobus-translate-options/).
+* [WPGlobus Translate Options home page](https://wpglobus.com/add-ons/wpglobus-translate-options/).
 * [GitHub code repository](https://github.com/WPGlobus/wpglobus-translate-options).
 
 ## Installation ##
@@ -38,11 +38,11 @@ We appreciate all contributions, ideas, critique, and help.
 
 * To speed up our development, please report bugs, with reproduction steps on [WPGlobus Translate Options GitHub](https://github.com/WPGlobus/wpglobus-translate-options).
 * Plugin and theme authors: please try WPGlobus Translate Options and let us know if you find any compatibility problems.
-* Contact us directly on [WPGlobus.com](http://www.wpglobus.com/contact-us/).
+* Contact us directly on [WPGlobus.com](https://wpglobus.com/contact-us/).
 
 ### More info? ###
 
-Please check out the [WPGlobus Website](http://www.wpglobus.com/extensions-archive/extension-translate-options-archive/) for additional information.
+Please check out the [WPGlobus Website](https://wpglobus.com/extensions-archive/extension-translate-options-archive/) for additional information.
 
 ## Screenshots ##
 
