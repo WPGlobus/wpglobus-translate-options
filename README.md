@@ -3,7 +3,7 @@
 **Donate link:** https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SLF8M4YNZHNQN  
 **Tags:** WPGlobus, globalization, i18n, international, l10n, localization, multilanguage, multilingual, translate, translation  
 **Requires at least:** 4.0  
-**Tested up to:** 4.7
+**Tested up to:** 4.8.0
 **Stable tag:** trunk  
 **License:** GPLv2
 **License URI:** https://github.com/WPGlobus/wpglobus-translate-options/blob/master/LICENSE  
@@ -51,6 +51,9 @@ Please check out the [WPGlobus Website](https://wpglobus.com/extensions-archive/
 
 
 ## Changelog ##
+
+### 1.5.0 ###
+* [core] Added Theme page on options screen.
 
 ### 1.4.6 ###
 * [core] Exclude from translation the objects.
