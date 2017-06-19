@@ -68,22 +68,27 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 	class WPGlobus_Translate_Options {
 
 		/**
-		 * All options page
+		 * All options page.
 		 */
 		const TRANSLATE_OPTIONS_PAGE = 'wpglobus-translate-options';
+		
+		/**
+		 * Theme page.
+		 */		
+		const THEME_PAGE = 'wpglobus-translate-options-theme';
 
 		/**
-		 * WPGlobus Translate Options about page
+		 * WPGlobus Translate Options about page.
 		 */
 		const ABOUT_PAGE = 'wpglobus-translate-options-about';
 
 		/**
-		 * WPGlobus Translate Options settings page
+		 * WPGlobus Translate Options settings page.
 		 */
 		const SETTINGS_PAGE = 'wpglobus-translate-options-settings';
 
 		/**
-		 * WPGlobus Translate Options options key
+		 * WPGlobus Translate Options options key.
 		 */
 		const TRANSLATE_OPTIONS_KEY = 'wpglobus_translate_options';
 
@@ -369,7 +374,7 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 				self::TRANSLATE_OPTIONS_PAGE,
 				array(
 					$this,
-					'on_translate_options_page'
+					'on__translate_options_page'
 				)
 			);
 
@@ -378,10 +383,22 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 				'',
 				'',
 				'administrator',
+				self::THEME_PAGE,
+				array(
+					$this,
+					'on__translate_options_page'
+				)
+			);			
+			
+			add_submenu_page(
+				null,
+				'',
+				'',
+				'administrator',
 				self::SETTINGS_PAGE,
 				array(
 					$this,
-					'on_translate_options_page'
+					'on__translate_options_page'
 				)
 			);
 
@@ -393,7 +410,7 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 				self::ABOUT_PAGE,
 				array(
 					$this,
-					'on_translate_options_page'
+					'on__translate_options_page'
 				)
 			);
 
@@ -405,7 +422,7 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 		 * @since 1.0.0
 		 * @return void
 		 */
-		function on_translate_options_page() {
+		function on__translate_options_page() {
 
 			/** @global string $pagenow */
 			global $pagenow;
@@ -419,7 +436,9 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 
 			$tab_active = array();
 			$tab_active[self::TRANSLATE_OPTIONS_PAGE] = '';
+			$tab_active[self::THEME_PAGE] 		  	  = '';
 			$tab_active[self::SETTINGS_PAGE] 		  = '';
+			$tab_active[self::ABOUT_PAGE] 		  	  = '';
 
 			if ( $pagenow == 'admin.php' && isset($_GET['page']) ) :
 
@@ -442,6 +461,14 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 
 					$tab_active[self::SETTINGS_PAGE] = ' nav-tab-active';
 
+				} elseif ( self::ABOUT_PAGE == $page  ) {
+					
+					$tab_active[self::ABOUT_PAGE] = ' nav-tab-active';
+				
+				} elseif ( self::THEME_PAGE == $page  ) {
+					
+					$tab_active[self::THEME_PAGE] = ' nav-tab-active';
+					
 				}
 
 			endif;
@@ -503,9 +530,11 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 					<h2 class="nav-tab-wrapper">
 						<a href="admin.php?page=<?php echo self::TRANSLATE_OPTIONS_PAGE; ?>" class="nav-tab<?php echo $tab_active[self::TRANSLATE_OPTIONS_PAGE]; ?>">
 							<?php _e( 'All options' ); ?>
+						</a><a href="admin.php?page=<?php echo self::THEME_PAGE; ?>" class="nav-tab<?php echo $tab_active[self::THEME_PAGE]; ?>">
+							<?php _e( 'Theme options' ); ?>
 						</a><a href="admin.php?page=<?php echo self::SETTINGS_PAGE; ?>" class="nav-tab<?php echo $tab_active[self::SETTINGS_PAGE]; ?>">
 							<?php _e( 'Settings' ); ?>
-						</a><a href="admin.php?page=<?php echo self::ABOUT_PAGE; ?>" class="nav-tab">
+						</a><a href="admin.php?page=<?php echo self::ABOUT_PAGE; ?>" class="nav-tab<?php echo $tab_active[self::ABOUT_PAGE]; ?>">
 							<?php _e( 'About', '' ); ?>
 						</a>
 					</h2>
@@ -513,6 +542,10 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 					<?php
 
 					switch( $page ) :
+					case self::THEME_PAGE :
+						include_once( plugin_dir_path( __FILE__ ) . 'includes\page-theme.php' );
+						// <!-- self::THEME_PAGE -->
+					break;					
 					case self::TRANSLATE_OPTIONS_PAGE :	?>
 
 						<form method="post" id="options"> <?php
@@ -732,7 +765,7 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 			?>
 
 			<div class="float-block">
-				Options to translate:<br />
+				<h3>Options to translate:</h3><br />
 				<textarea cols="40" rows="20" name="wpglobus_translate_options" id="wpglobus_translate_options"><?php echo $options; ?></textarea>
 				<br />
 				<input type="hidden" name="wpglobus_translate_form" value="" />

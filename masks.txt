@@ -15,3 +15,4 @@ wpcf
 wpglobus_
 wpgupd
 wpseo
+qtranslate_
