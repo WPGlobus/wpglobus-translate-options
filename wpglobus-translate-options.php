@@ -543,7 +543,7 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 
 					switch( $page ) :
 					case self::THEME_PAGE :
-						include_once( plugin_dir_path( __FILE__ ) . 'includes\page-theme.php' );
+						include_once( plugin_dir_path( __FILE__ ) . 'includes/page-theme.php' );
 						// <!-- self::THEME_PAGE -->
 					break;					
 					case self::TRANSLATE_OPTIONS_PAGE :	?>
