@@ -52,6 +52,9 @@ Please check out the [WPGlobus Website](https://wpglobus.com/extensions-archive/
 
 ## Changelog ##
 
+### 1.5.1 ###
+* [core] Correct path to load theme info page.
+
 ### 1.5.0 ###
 * [core] Added Theme page on options screen.
 
