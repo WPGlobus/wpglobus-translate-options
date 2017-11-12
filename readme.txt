@@ -51,6 +51,9 @@ Please check out the [WPGlobus Website](https://wpglobus.com/extensions-archive/
 
 == Changelog ==
 
+= 1.5.2 =
+* [core] Added theme's info to 'All options' page.
+
 = 1.5.1 =
 * [core] Correct path to load theme info page.
 
