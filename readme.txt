@@ -3,7 +3,7 @@ Contributors: alexgff, tivnetinc, tivnet
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SLF8M4YNZHNQN
 Tags: WPGlobus, globalization, i18n, international, l10n, localization, multilanguage, multilingual, translate, translation
 Requires at least: 4.0
-Tested up to: 4.8
+Tested up to: 4.9
 Stable tag: trunk
 License: GPLv2
 License URI: https://github.com/WPGlobus/wpglobus-translate-options/blob/master/LICENSE
