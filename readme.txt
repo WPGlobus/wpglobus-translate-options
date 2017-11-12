@@ -51,6 +51,9 @@ Please check out the [WPGlobus Website](https://wpglobus.com/extensions-archive/
 
 == Changelog ==
 
+= 1.5.3 =
+* Tested up to WP 4.9.
+
 = 1.5.2 =
 * [core] Added theme's info to 'All options' page.
 
