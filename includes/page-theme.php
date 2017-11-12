@@ -30,7 +30,7 @@ if ( ! empty( $theme->get('Template') ) ) {
 	<thead>
 		<tr>
 			<th>Parameter</th>
-			<th>Value</th>
+			<th style="text-align: left;">Value</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -57,7 +57,7 @@ if ( ! empty( $parent_theme ) ) {
 		<thead>
 			<tr>
 				<th>Parameter</th>
-				<th>Value</th>
+				<th style="text-align: left;">Value</th>
 			</tr>
 		</thead>
 		<tbody>

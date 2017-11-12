@@ -545,9 +545,29 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 					case self::THEME_PAGE :
 						include_once( plugin_dir_path( __FILE__ ) . 'includes/page-theme.php' );
 						// <!-- self::THEME_PAGE -->
-					break;					
+						break;					
 					case self::TRANSLATE_OPTIONS_PAGE :	?>
-
+						<?php
+						if ( empty($_GET['option']) ) :
+						?>
+							<div class="search">
+								<?php 
+								$parent_theme = '';
+								$theme = wp_get_theme();
+								if ( ! empty( $theme->get('Template') ) ) {
+									$parent_theme = wp_get_theme( get_template() );
+									$parent_theme_caption = 'Parent theme'; 
+								}	?>
+								<p>Current theme: <b><?php echo $theme->Name; ?></b></p>
+								<p>Current theme's options: <b><?php echo 'theme_mods_' . get_stylesheet(); ?></b></p>	<?php							
+								if ( ! empty( $parent_theme ) ) {	?>
+									<p>Parent theme: <b><?php echo $parent_theme->Name; ?></b></p>
+									<p>Parent theme's options: <b><?php echo 'theme_mods_' . get_template(); ?></b></p>	<?php
+								}	?>
+							</div>
+						<?php
+						endif;
+						?>
 						<form method="post" id="options"> <?php
 
 							$search = false;
