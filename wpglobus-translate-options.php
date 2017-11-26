@@ -552,9 +552,10 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 						?>
 							<div class="search">
 								<?php 
-								$parent_theme = '';
-								$theme = wp_get_theme();
-								if ( ! empty( $theme->get('Template') ) ) {
+								$parent_theme 	 = '';
+								$theme 			 = wp_get_theme();
+								$parent_template = $theme->get('Template');
+								if ( ! empty( $parent_template ) ) {
 									$parent_theme = wp_get_theme( get_template() );
 									$parent_theme_caption = 'Parent theme'; 
 								}	?>
@@ -937,9 +938,9 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 			}
 
 			$tab = array(
-				'title' 		=> __( 'WPGlobus Translate Options', 'wpglobus' ),
+				'title' 		=> __( 'Translate Options', 'wpglobus' ),
 				'link_class' 	=> array( 'nav-tab', 'nav-tab-active' ),
-				'span_class' 	=> array( 'dashicons', 'dashicons-images-alt' ),
+				'span_class' 	=> array( 'dashicons', 'dashicons-admin-tools' ),
 				'link' 			=> $link_template,
 				'href' 			=> '#',
 				'tab_id' 		=> 'tab-translate-options'
