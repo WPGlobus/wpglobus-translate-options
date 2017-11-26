@@ -51,6 +51,9 @@ Please check out the [WPGlobus Website](https://wpglobus.com/extensions-archive/
 
 == Changelog ==
 
+= 1.5.4 =
+* [core] Fixed "can't use method return value in write context".
+
 = 1.5.3 =
 * Tested up to WP 4.9.
 
