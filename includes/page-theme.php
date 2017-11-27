@@ -19,7 +19,8 @@ $params = array(
 			'DomainPath' 
 		);
 		
-if ( ! empty( $theme->get('Template') ) ) {
+$parent_template = $theme->get('Template');		
+if ( ! empty( $parent_template ) ) {
 	$parent_theme = wp_get_theme( get_template() );
 	$theme_caption .= ' (child theme)'; 
 	$parent_theme_caption = 'Parent theme'; 
