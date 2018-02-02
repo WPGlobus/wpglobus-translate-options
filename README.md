@@ -52,6 +52,9 @@ Please check out the [WPGlobus Website](https://wpglobus.com/extensions-archive/
 
 ## Changelog ##
 
+### 1.5.6 ###
+* [core] added support Cookie Notice by dFactory (https://wordpress.org/plugins/cookie-notice/).
+
 ### 1.5.5 ###
 * [core] fixed "can't use method return value in write context" on Theme options tab
 
