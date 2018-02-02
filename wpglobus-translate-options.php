@@ -204,6 +204,10 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 
 			} else {
 
+				/**
+				 * @scope front.
+				 */
+				 
 				if ( !empty($this->options['wpglobus_translate_options']) ) :
 
 					foreach ( $this->options['wpglobus_translate_options'] as $option ) {
@@ -219,6 +223,13 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 					}
 
 				endif;
+				
+				if ( class_exists('Cookie_Notice') ) {
+					/**
+					 * @see https://wordpress.org/plugins/cookie-notice/
+					 */
+					add_filter('cn_cookie_notice_args', array($this, 'filter__translate_option') );
+				}
 
 			}
 
