@@ -5,19 +5,24 @@ Tags: WPGlobus, localization, multilingual, translate, translation
 Requires at least: 4.0
 Tested up to: 4.9
 Stable tag: trunk
-License: GPL-3.0
-License URI: https://github.com/WPGlobus/wpglobus-translate-options/blob/master/LICENSE
+Requires PHP: 5.3
+License: GPL-3.0-or-later
+License URI: https://spdx.org/licenses/GPL-3.0-or-later.html
 
 == Description ==
 
-**WPGlobus Translate Options** enables selective translation of the wp_options table strings. You need to use it when your theme or a 3rd party plugin (a slider, for example) has its own option panel, where you enter texts.
+**WPGlobus Translate Options** is a free add-on to the [WPGlobus Multilingual WordPress Plugin](https://wordpress.org/plugins/wpglobus/). It enables selective translation of the texts residing in the `wp_options` database table.
 
-> **NOTE:** Highly recommend to install this add-on immediately after [WPGlobus Multilingual Plugin](https://wordpress.org/plugins/wpglobus/) core plugin will be installed.
+You need to use WPGlobus Translate Options when the active theme or a 3rd party plugin (a slider, for example) has its own option panel, where you enter texts.
+
+> **NOTE:** This plugin requires [WPGlobus](https://wordpress.org/plugins/wpglobus/). Please install and activate WPGlobus before using the `Translate Options` add-on.
 
 = More info =
 
-* [WPGlobus Translate Options home page](https://wpglobus.com/extensions-archive/extension-translate-options-archive/).
+* [Multilingual Texts in WordPress Theme Options Panel](https://wpglobus.com/extensions-archive/multilingual-texts-in-wordpress-theme-options-panel/)
+* [WPGlobus Translate Options @ WPGlobus.com](https://wpglobus.com/extensions-archive/extension-translate-options-archive/).
 * [GitHub code repository](https://github.com/WPGlobus/wpglobus-translate-options).
+* [Premium WPGlobus add-ons](https://wpglobus.com/shop/)
 
 == Installation ==
 

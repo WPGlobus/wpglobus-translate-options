@@ -25,6 +25,7 @@
     "grunt-exec": "^3.0.0",
     "grunt-text-replace": "^0.4.0",
     "grunt-tivwp-po": "^0.1.0",
+    "grunt-wp-readme-to-markdown": "^2.0.1",
     "grunt-wp-i18n": "^1.0.1",
     "grunt-writefile": "^0.1.4",
     "load-grunt-config": "^0.19.2",

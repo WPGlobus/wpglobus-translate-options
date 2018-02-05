@@ -9,6 +9,7 @@
   ],
   "dist": [
     "replace:version",
+    "wp_readme_to_markdown",
     "pomo",
     "less",
     "cssmin",	

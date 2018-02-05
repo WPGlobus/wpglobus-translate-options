@@ -1,30 +1,34 @@
 # WPGlobus Translate Options #
-**Contributors:** alexgff, tivnetinc, tivnet  
+**Contributors:** [alexgff](https://profiles.wordpress.org/alexgff), [tivnetinc](https://profiles.wordpress.org/tivnetinc), [tivnet](https://profiles.wordpress.org/tivnet)  
 **Donate link:** https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SLF8M4YNZHNQN  
-**Tags:** WPGlobus, globalization, i18n, international, l10n, localization, multilanguage, multilingual, translate, translation  
+**Tags:** WPGlobus, localization, multilingual, translate, translation  
 **Requires at least:** 4.0  
-**Tested up to:** 4.9
+**Tested up to:** 4.9  
 **Stable tag:** trunk  
-**License:** GPLv2
-**License URI:** https://github.com/WPGlobus/wpglobus-translate-options/blob/master/LICENSE  
+**Requires PHP:** 5.3  
+**License:** GPL-3.0-or-later  
+**License URI:** https://spdx.org/licenses/GPL-3.0-or-later.html  
 
 ## Description ##
 
-**WPGlobus Translate Options** enables selective translation of the wp_options table strings. You need to use it when your theme or a 3rd party plugin (a slider, for example) has its own option panel, where you enter texts.
+**WPGlobus Translate Options** is a free add-on to the [WPGlobus Multilingual WordPress Plugin](https://wordpress.org/plugins/wpglobus/). It enables selective translation of the texts residing in the `wp_options` database table.
 
-> **NOTE:** Highly recommend to install this add-on immediately after [WPGlobus Multilingual Plugin](https://wordpress.org/plugins/wpglobus/) core plugin will be installed.
+You need to use WPGlobus Translate Options when the active theme or a 3rd party plugin (a slider, for example) has its own option panel, where you enter texts.
+
+> **NOTE:** This plugin requires [WPGlobus](https://wordpress.org/plugins/wpglobus/). Please install and activate WPGlobus before using the `Translate Options` add-on.
 
 ### More info ###
 
-* [WPGlobus Translate Options home page](https://wpglobus.com/add-ons/wpglobus-translate-options/).
+* [Multilingual Texts in WordPress Theme Options Panel](https://wpglobus.com/extensions-archive/multilingual-texts-in-wordpress-theme-options-panel/)
+* [WPGlobus Translate Options @ WPGlobus.com](https://wpglobus.com/extensions-archive/extension-translate-options-archive/).
 * [GitHub code repository](https://github.com/WPGlobus/wpglobus-translate-options).
+* [Premium WPGlobus add-ons](https://wpglobus.com/shop/)
 
 ## Installation ##
 
 You can install this plugin directly from your WordPress dashboard:
-
 1. Go to the *Plugins* menu and click *Add New*.
-1. Search for *WPGlobus Translate Options*.
+1. Search for *WPGlobus*.
 1. Click *Install Now* next to the *WPGlobus Translate Options* plugin.
 1. Activate the plugin.
 
@@ -46,14 +50,20 @@ Please check out the [WPGlobus Website](https://wpglobus.com/extensions-archive/
 
 ## Screenshots ##
 
-### 1. Plugin admin interface. ###
-![Plugin admin interface.](https://raw.githubusercontent.com/WPGlobus/wpglobus-translate-options/master/assets/screenshot-2.png)
+### 1. Menu item. ###
+![Menu item.](https://ps.w.org/wpglobus-translate-options/assets/screenshot-1.png)
+
+### 2. WPGlobus Translate Options interface. ###
+![WPGlobus Translate Options interface.](https://ps.w.org/wpglobus-translate-options/assets/screenshot-2.png)
+
+### 3. Interface to add option for translation. ###
+![Interface to add option for translation.](https://ps.w.org/wpglobus-translate-options/assets/screenshot-3.png)
 
 
 ## Changelog ##
 
 ### 1.5.6 ###
-* [core] added support Cookie Notice by dFactory (https://wordpress.org/plugins/cookie-notice/).
+* [core] added support Cookie Notice by dFactory (https://wordpress.org/plugins/cookie-notice/)
 
 ### 1.5.5 ###
 * [core] fixed "can't use method return value in write context" on Theme options tab
