@@ -4,7 +4,7 @@
   "description": "WPGlobus - Translate Options",
   "keywords": ["WordPress","multilingual","translate","WPGlobus"],
   "homepage": "https://github.com/WPGlobus/wpglobus-translate-options",
-  "license": "GPL-2.0",
+  "license": "GPL-3.0-or-later",
   "authors": [
     {
       "name": "The WPGlobus Team",

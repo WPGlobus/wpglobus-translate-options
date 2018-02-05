@@ -5,7 +5,7 @@ Tags: WPGlobus, globalization, i18n, international, l10n, localization, multilan
 Requires at least: 4.0
 Tested up to: 4.9
 Stable tag: trunk
-License: GPLv2
+License: GPL-3.0
 License URI: https://github.com/WPGlobus/wpglobus-translate-options/blob/master/LICENSE
 
 == Description ==
