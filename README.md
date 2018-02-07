@@ -62,6 +62,11 @@ Please check out the [WPGlobus Website](https://wpglobus.com/extensions-archive/
 
 ## Changelog ##
 
+### 1.5.7 ###
+* readme.txt - better texts and additional links.
+* Fixed: Too many tags (new WP rules).
+* License GPL-3.0.
+
 ### 1.5.6 ###
 * [core] added support Cookie Notice by dFactory (https://wordpress.org/plugins/cookie-notice/)
 
