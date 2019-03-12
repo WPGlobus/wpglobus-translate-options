@@ -3,9 +3,9 @@
 **Donate link:** https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SLF8M4YNZHNQN  
 **Tags:** WPGlobus, localization, multilingual, translate, translation  
 **Requires at least:** 4.0  
-**Tested up to:** 4.9  
+**Tested up to:** 5.1  
 **Stable tag:** trunk  
-**Requires PHP:** 5.3  
+**Requires PHP:** 5.6  
 **License:** GPL-3.0-or-later  
 **License URI:** https://spdx.org/licenses/GPL-3.0-or-later.html  
 
