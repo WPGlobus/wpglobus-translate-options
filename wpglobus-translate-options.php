@@ -542,7 +542,7 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 						<a href="admin.php?page=<?php echo self::TRANSLATE_OPTIONS_PAGE; ?>" class="nav-tab<?php echo $tab_active[self::TRANSLATE_OPTIONS_PAGE]; ?>">
 							<?php _e( 'All options' ); ?>
 						</a><a href="admin.php?page=<?php echo self::THEME_PAGE; ?>" class="nav-tab<?php echo $tab_active[self::THEME_PAGE]; ?>">
-							<?php _e( 'Theme options' ); ?>
+							<?php _e( 'Theme properties' ); ?>
 						</a><a href="admin.php?page=<?php echo self::SETTINGS_PAGE; ?>" class="nav-tab<?php echo $tab_active[self::SETTINGS_PAGE]; ?>">
 							<?php _e( 'Settings' ); ?>
 						</a><a href="admin.php?page=<?php echo self::ABOUT_PAGE; ?>" class="nav-tab<?php echo $tab_active[self::ABOUT_PAGE]; ?>">
