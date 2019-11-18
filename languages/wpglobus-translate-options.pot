@@ -2,9 +2,9 @@
 # This file is distributed under the GPL-3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPGlobus Translate Options 1.5.8\n"
+"Project-Id-Version: WPGlobus Translate Options 1.6.0\n"
 "Report-Msgid-Bugs-To: https://wpglobus.com/pg/contact-us/\n"
-"POT-Creation-Date: 2019-05-13 05:54:02+00:00\n"
+"POT-Creation-Date: 2019-11-18 07:51:32+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -39,23 +39,27 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: wpglobus-translate-options.php:247 wpglobus-translate-options.php:547
+#: wpglobus-translate-options.php:39
+msgid "Translate strings"
+msgstr ""
+
+#: wpglobus-translate-options.php:239 wpglobus-translate-options.php:539
 msgid "Settings"
 msgstr ""
 
-#: wpglobus-translate-options.php:543
+#: wpglobus-translate-options.php:535
 msgid "All options"
 msgstr ""
 
-#: wpglobus-translate-options.php:545
+#: wpglobus-translate-options.php:537
 msgid "Theme properties"
 msgstr ""
 
-#: wpglobus-translate-options.php:549
+#: wpglobus-translate-options.php:541
 msgid "About"
 msgstr ""
 
-#: wpglobus-translate-options.php:952
+#: wpglobus-translate-options.php:943
 msgid "Translate Options"
 msgstr ""
 
