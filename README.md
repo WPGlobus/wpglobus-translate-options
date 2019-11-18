@@ -3,7 +3,7 @@
 **Donate link:** https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SLF8M4YNZHNQN  
 **Tags:** WPGlobus, localization, multilingual, translate, translation  
 **Requires at least:** 4.0  
-**Tested up to:** 5.2  
+**Tested up to:** 5.3 
 **Stable tag:** trunk  
 **Requires PHP:** 5.6  
 **License:** GPL-3.0-or-later  
@@ -61,6 +61,10 @@ Please check out the [WPGlobus Website](https://wpglobus.com/extensions-archive/
 
 
 ## Changelog ##
+
+### 1.6.0 ###
+* Tested up to WP 5.3.
+* Small improvements.
 
 ### 1.5.8 ###
 * Tested up to WP 5.2.
