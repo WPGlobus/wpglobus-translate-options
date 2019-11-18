@@ -56,7 +56,7 @@ Please check out the [WPGlobus Website](https://wpglobus.com/extensions-archive/
 
 == Changelog ==
 
-= 1.5.8 =
+= 1.6.0 =
 * Tested up to WP 5.3.
 * Small improvements.
 
