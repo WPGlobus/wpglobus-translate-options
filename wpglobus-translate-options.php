@@ -21,35 +21,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'WPGLOBUS_TRANSLATE_OPTIONS_VERSION', '1.5.8' );
 
-add_filter( 'wpglobus_option_sections', 'wpglobus_add_options_section' );
+add_filter( 'wpglobus_option_sections', 'filter__wpglobus_add_option_section' );
 /**
  * Filter the value of an option.
- * @see filter wpglobus_option_sections
+ * @see filter `wpglobus_option_sections` wpglobus\includes\options\class-wpglobus-options.php
  *
  * @since 1.0.0
+ * @since 1.6.0
  *
  * @param array $sections Array of the options.
  * @return array
  */
-function wpglobus_add_options_section( $sections ) {
+function filter__wpglobus_add_option_section( $sections ) {
 
 	$sections[] = array(
-		'title' => 'Translation options',
-		'icon' => 'el-icon-link',
-		'class' => 'wpglobus-translate-options-group',
-		'fields' => array(
-			array(
-				'id'       => 'translate_options_link',
-				'type'     => version_compare( WPGLOBUS_VERSION, '1.2.2', '>=' ) ? 'wpglobus_info' : 'info',
-				'title'    => 'Click to open <a href="admin.php?page=wpglobus-translate-options">Translate options page</a>',
-				'style'    => 'info',
-			)
-
-		)
+		'wpglobus_id'  => 'translate_options_link',
+		'title' 	   => esc_html__('Translate strings', 'wpglobus'),
+		'icon' 		   => 'dashicons dashicons-admin-tools',
+		'tab_href'     => add_query_arg( 'page', 'wpglobus-translate-options', admin_url( 'admin.php' ) ),
+		'externalLink' => true
 	);
-
+	
 	return $sections;
-
 }
 
 add_action( 'plugins_loaded', 'wpglobus_translate_options_load', 11 );
@@ -208,7 +201,7 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 				 * @scope front.
 				 */
 				 
-				if ( !empty($this->options['wpglobus_translate_options']) ) :
+				if ( ! empty($this->options['wpglobus_translate_options']) ) :
 
 					foreach ( $this->options['wpglobus_translate_options'] as $option ) {
 						$keys = explode('+', $option );
@@ -219,12 +212,11 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 							$this,
 							'filter__translate_option'
 						) );
-
 					}
 
 				endif;
 				
-				if ( class_exists('Cookie_Notice') ) {
+				if ( class_exists('Cookie_Notice') && defined('WPGLOBUS_TRANSLATE_OPTIONS_COOKIE_NOTICE') && WPGLOBUS_TRANSLATE_OPTIONS_COOKIE_NOTICE ) {
 					/**
 					 * @see https://wordpress.org/plugins/cookie-notice/
 					 */
@@ -876,8 +868,7 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 				}
 				$i++;
 			}
-			//return '<div style="vertical-align:top;"><a href="#" class="wpglobus-translate" title="Click to add translation list" data-source="' . $str . '" onclick="return false;">' . $r . '</a></div>' . '';
-			return '<div style="vertical-align:top;">' . $r . '</div>';
+			return '<div style="vertical-align:top;">&nbsp;&nbsp;&nbsp;<strong>' . $r . '</strong></div>';
 		}
 
 
@@ -949,7 +940,7 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 			}
 
 			$tab = array(
-				'title' 		=> __( 'Translate Options', 'wpglobus' ),
+				'title' 		=> esc_html__( 'Translate Options', 'wpglobus' ),
 				'link_class' 	=> array( 'nav-tab', 'nav-tab-active' ),
 				'span_class' 	=> array( 'dashicons', 'dashicons-admin-tools' ),
 				'link' 			=> $link_template,
