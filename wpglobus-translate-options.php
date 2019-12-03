@@ -270,7 +270,11 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 						$options[$key] = $this->_translate( $value );
 					} else {
 						if ( WPGlobus_Core::has_translations( $value ) ) {
-							$options[$key] = WPGlobus_Core::text_filter( $value, WPGlobus::Config()->language );
+							if ( defined('WPGLOBUS_TRANSLATE_OPTIONS_USE_TEXT_FILTER') && WPGLOBUS_TRANSLATE_OPTIONS_USE_TEXT_FILTER ) {
+								$options[$key] = WPGlobus_Core::text_filter( $value, WPGlobus::Config()->language );
+							} else {
+								$options[$key] = WPGlobus_Core::extract_text( $value, WPGlobus::Config()->language );
+							}
 						}
 					}
 
@@ -285,7 +289,11 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 
 			} elseif ( is_string($options) ) {
 				if ( WPGlobus_Core::has_translations( $options ) ) {
-					$options = WPGlobus_Core::text_filter( $options, WPGlobus::Config()->language );
+					if ( defined('WPGLOBUS_TRANSLATE_OPTIONS_USE_TEXT_FILTER') && WPGLOBUS_TRANSLATE_OPTIONS_USE_TEXT_FILTER ) {
+						$options = WPGlobus_Core::text_filter( $options, WPGlobus::Config()->language );
+					} else {
+						$options = WPGlobus_Core::extract_text( $options, WPGlobus::Config()->language );
+					}
 				}
 			}
 
