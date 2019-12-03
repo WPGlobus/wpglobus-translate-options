@@ -56,6 +56,9 @@ Please check out the [WPGlobus Website](https://wpglobus.com/extensions-archive/
 
 == Changelog ==
 
+= 1.7.0 =
+* Using `extract_text` instead of `text_filter` function to get text from multilingual string.
+
 = 1.6.0 =
 * Tested up to WP 5.3.
 * Small improvements.
