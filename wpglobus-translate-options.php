@@ -5,7 +5,7 @@
  * Description: Translate options from 'wp_options' table for <a href="https://wordpress.org/plugins/wpglobus/">WPGlobus</a>.
  * Text Domain: wpglobus-translate-options
  * Domain Path: /languages/
- * Version: 1.7.0
+ * Version: 1.8.0
  * Author: WPGlobus
  * Author URI: https://wpglobus.com/
  * Network: false
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'WPGLOBUS_TRANSLATE_OPTIONS_VERSION', '1.7.0' );
+define( 'WPGLOBUS_TRANSLATE_OPTIONS_VERSION', '1.8.0' );
 
 add_filter( 'wpglobus_option_sections', 'filter__wpglobus_add_option_section' );
 /**
@@ -546,16 +546,15 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 
 			};
 
+			$_caption = esc_html__( 'WPGlobus Translate Options', '' ) . ': v.' . WPGLOBUS_TRANSLATE_OPTIONS_VERSION;
 			?>
-
 			<div class="wrap">
-
 				<h2><?php
 					/**
 					 * @quirk
 					 * This should be H2, so that it goes above the WP admin notices
 					 */
-					esc_html_e( 'WPGlobus Translate Options', '' );
+					echo $_caption;
 					?></h2>
 
 

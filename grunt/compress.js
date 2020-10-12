@@ -27,6 +27,7 @@ module.exports = {
                 "!node_modules/**",
                 "!npm-debug.log",
                 "!package.json",
+                "!package-lock.json",
                 "!phpunit.xml",
                 "!README.md",
                 "!tests/**",
