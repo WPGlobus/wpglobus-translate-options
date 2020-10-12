@@ -9,7 +9,7 @@
  * Author: WPGlobus
  * Author URI: https://wpglobus.com/
  * Network: false
- * Copyright 2015-2019 Alex Gor (alexgff) / WPGlobus
+ * Copyright 2015-2020 Alex Gor (alexgff) / WPGlobus
  * License: GPL-3.0
  * License URI: http://www.gnu.org/licenses/gpl.txt
  */
@@ -28,18 +28,41 @@ add_filter( 'wpglobus_option_sections', 'filter__wpglobus_add_option_section' );
  *
  * @since 1.0.0
  * @since 1.6.0
+ * @since 1.8.0 Plugin tab moved up on WPGlobus Options page.
  *
  * @param array $sections Array of the options.
  * @return array
  */
 function filter__wpglobus_add_option_section( $sections ) {
+	
+	if ( empty( $sections ) ) {
+		return $sections;
+	}
+	
+	$pos = array_search( 'wpglobus-plus', array_keys( $sections ), true );
+	
+	if ( ! $pos ) {
+		
+		$pos = array_search( 'rest-api', array_keys( $sections ), true );
+		
+		if ( ! $pos ) {
+			$pos = count( $sections );
+		}
+		
+	}
 
-	$sections[] = array(
+	$section['translate-strings'] = array(
 		'wpglobus_id'  => 'translate_options_link',
-		'title' 	   => esc_html__('Translate strings', 'wpglobus'),
+		'title' 	   => esc_html__( 'Translate strings', 'wpglobus' ),
 		'icon' 		   => 'dashicons dashicons-admin-tools',
 		'tab_href'     => add_query_arg( 'page', 'wpglobus-translate-options', admin_url( 'admin.php' ) ),
 		'externalLink' => true
+	);
+
+	$sections = array_merge(
+		array_slice( $sections, 0, $pos + 1 ),
+		$section,
+		array_slice( $sections, $pos + 1 )
 	);
 	
 	return $sections;
@@ -985,4 +1008,6 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 
 	}
 
-endif; // class_exists
+endif; // class_exists.
+
+# --- EOF
