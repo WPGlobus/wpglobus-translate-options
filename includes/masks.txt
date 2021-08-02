@@ -1,8 +1,13 @@
+blogdescription
+blogname
+_transient_
+_site_transient
 _wp_session
 _wc_session
 _wpcf
-acf
+_aioseo_
 aioseop_
+acf
 db_upgraded
 jetpack_
 p3
@@ -17,5 +22,3 @@ wpglobus_
 _wpglobus_
 wpglobus-
 wpgupd
-wpseo
-qtranslate_
