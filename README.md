@@ -62,6 +62,9 @@ Please check out the [WPGlobus Website](https://wpglobus.com/extensions-archive/
 
 ## Changelog ##
 
+### 1.9.0 ###
+* Revised code.
+
 ### 1.8.0 ###
 * Plugin tab moved upper on WPGlobus Options page.
 
