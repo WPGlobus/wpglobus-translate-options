@@ -8,20 +8,21 @@
  * @subpackage Administration
  */
 /*jslint browser: true*/
-/*global jQuery, console, WPGlobusCore, WPGlobusCoreData*/
+/*global jQuery, console*/
 var WPGlobusTranslateOptions;
 
 jQuery(document).ready(function($) {
 	"use strict";
+	
 	var api;
+	
 	api = WPGlobusTranslateOptions = {
 
-		init : function() {
+		init: function() {
 			
 			api.setFloatBlock( $('h2.nav-tab-wrapper').offset().top );
 			
 			$('.wpglobus-translate').on('click', function(event){
-				
 				var opt = $(this).data('source'),
 					s = $('#wpglobus_translate_options'),
 					v = s.val(),
@@ -31,12 +32,9 @@ jQuery(document).ready(function($) {
 					cr = '';		
 				}	
 				s.val(v+cr+opt);
-			
 			});
-			
 		},
-		
-		setFloatBlock : function(fromTopPx){
+		setFloatBlock: function(fromTopPx){
 			var $float_block = $('.float-block');
 			$(window).scroll(function(){
 				var scrolledFromtop = $(window).scrollTop();
@@ -47,8 +45,6 @@ jQuery(document).ready(function($) {
 				}
 			});
 		}		
-	
-	
 	};
 
 	WPGlobusTranslateOptions.init();

@@ -1,14 +1,14 @@
-# Copyright (C) 2020 WPGlobus
+# Copyright (C) 2021 WPGlobus
 # This file is distributed under the GPL-3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPGlobus Translate Options 1.8.0\n"
+"Project-Id-Version: WPGlobus Translate Options 1.9.0\n"
 "Report-Msgid-Bugs-To: https://wpglobus.com/pg/contact-us/\n"
-"POT-Creation-Date: 2020-10-12 09:26:32+00:00\n"
+"POT-Creation-Date: 2021-08-02 03:33:37+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2021-MO-DA HO:MI+ZONE\n"
 "Last-Translator: The WPGlobus Team <support@wpglobus.com>\n"
 "Language-Team: The WPGlobus Team <support@wpglobus.com>\n"
 "Language: en\n"
@@ -23,8 +23,41 @@ msgstr ""
 "X-Poedit-Bookmarks: \n"
 "X-Textdomain-Support: yes\n"
 
+#: includes/class-wpglobus-to-2.php:238
+#: includes/class-wpglobus-translate-options.php:518
+msgid "Settings"
+msgstr ""
+
 #. Plugin Name of the plugin/theme
 msgid "WPGlobus Translate Options"
+msgstr ""
+
+#: includes/class-wpglobus-to-2.php:592
+msgid "Translate Options"
+msgstr ""
+
+#: includes/class-wpglobus-to-rest-controller.php:125
+msgid "Options to translate."
+msgstr ""
+
+#: includes/class-wpglobus-to-rest-controller.php:454
+msgid "Sorry, you are not allowed to read options."
+msgstr ""
+
+#: includes/class-wpglobus-translate-options.php:211
+msgid "Options"
+msgstr ""
+
+#: includes/class-wpglobus-translate-options.php:514
+msgid "All options"
+msgstr ""
+
+#: includes/class-wpglobus-translate-options.php:516
+msgid "Theme properties"
+msgstr ""
+
+#: includes/class-wpglobus-translate-options.php:520
+msgid "About"
 msgstr ""
 
 #: includes/customize-options-wp44.php:99
@@ -41,26 +74,6 @@ msgstr ""
 
 #: wpglobus-translate-options.php:56
 msgid "Translate strings"
-msgstr ""
-
-#: wpglobus-translate-options.php:262 wpglobus-translate-options.php:569
-msgid "Settings"
-msgstr ""
-
-#: wpglobus-translate-options.php:565
-msgid "All options"
-msgstr ""
-
-#: wpglobus-translate-options.php:567
-msgid "Theme properties"
-msgstr ""
-
-#: wpglobus-translate-options.php:571
-msgid "About"
-msgstr ""
-
-#: wpglobus-translate-options.php:973
-msgid "Translate Options"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
