@@ -47,7 +47,7 @@ $themes = $this->args['themes'];
 	} else {
 		$active_theme = $themes['parent']['name'];
 		$theme_option = $themes['parent']['themeOption'];
-	} error_log( print_r( $themes, true ) );?>
+	} ?>
 	<div><?php
 		echo esc_html__( 'Текущая активная тема', 'wpglobus-translate-options' ) . '&nbsp;<strong>' . $active_theme . '</strong>&nbsp;';
 		echo esc_html__( 'использует опцию', 'wpglobus-translate-options' ) . '&nbsp;<strong>' . $theme_option . '</strong>'; ?>
