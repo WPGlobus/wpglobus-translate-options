@@ -43,10 +43,10 @@ $themes = $this->args['themes'];
 	$theme_option = '';
 	if ( $themes['child'] ) {
 		$active_theme = $themes['child']['name'];
-		$theme_option = $themes['child']['themeOption'];
+		$theme_option = $themes['child']['themeModsOption'];
 	} else {
 		$active_theme = $themes['parent']['name'];
-		$theme_option = $themes['parent']['themeOption'];
+		$theme_option = $themes['parent']['themeModsOption'];
 	} ?>
 	<div><?php
 		echo esc_html__( 'Текущая активная тема', 'wpglobus-translate-options' ) . '&nbsp;<strong>' . $active_theme . '</strong>&nbsp;';
@@ -55,7 +55,7 @@ $themes = $this->args['themes'];
 	if ( $themes['child'] ) {	?>
 		<div><?php
 			echo esc_html__( 'Parent theme', 'wpglobus-translate-options' ) . '&nbsp;<strong>' . $themes['parent']['name'] . '</strong>&nbsp;';
-			echo esc_html__( 'использует опцию', 'wpglobus-translate-options' ) . '&nbsp;<strong>' . $themes['parent']['themeOption'] . '</strong>'; ?>			
+			echo esc_html__( 'использует опцию', 'wpglobus-translate-options' ) . '&nbsp;<strong>' . $themes['parent']['themeModsOption'] . '</strong>'; ?>			
 		</div><?php
 	}	?>
 	<div><?php
