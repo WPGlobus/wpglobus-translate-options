@@ -29,11 +29,11 @@ $themes = $this->args['themes'];
 	</div>
 	<ul>
 		<li><?php
-			echo '- ' . esc_html__( 'в опциях темы требуется многоязычный текст об авторских правах для вывода в подвале сайта', 'wpglobus-translate-options' ); ?>
+			echo '- ' . esc_html__( 'the theme stores a copyright notice in the theme options; it will be displayed in the footer, and needs to be translatable', 'wpglobus-translate-options' ); ?>
 		</li>
 		<li><?php
-			echo '- ' . esc_html__( 'нужны многоязычные подписи для картинок, которые используются в слайдере', 'wpglobus-translate-options' ); ?>
-		</li>		
+			echo '- ' . esc_html__( 'need to translate texts displayed in picture sliders', 'wpglobus-translate-options' ); ?>
+		</li>
 	</ul><?php	
 	
 	// For instance, the slider used in the Ample theme stores the textual overlays in the options table. 
@@ -49,22 +49,22 @@ $themes = $this->args['themes'];
 		$theme_option = $themes['parent']['themeModsOption'];
 	} ?>
 	<div><?php
-		echo esc_html__( 'Текущая активная тема', 'wpglobus-translate-options' ) . '&nbsp;<strong>' . $active_theme . '</strong>&nbsp;';
-		echo esc_html__( 'использует опцию', 'wpglobus-translate-options' ) . '&nbsp;<strong>' . $theme_option . '</strong>'; ?>
+		echo esc_html__( 'The active theme', 'wpglobus-translate-options' ) . '&nbsp;<strong>' . $active_theme . '</strong>&nbsp;';
+		echo esc_html__( 'uses an option', 'wpglobus-translate-options' ) . '&nbsp;<strong>' . $theme_option . '</strong>'; ?>
 	</div><?php
 	if ( $themes['child'] ) {	?>
 		<div><?php
 			echo esc_html__( 'Parent theme', 'wpglobus-translate-options' ) . '&nbsp;<strong>' . $themes['parent']['name'] . '</strong>&nbsp;';
-			echo esc_html__( 'использует опцию', 'wpglobus-translate-options' ) . '&nbsp;<strong>' . $themes['parent']['themeModsOption'] . '</strong>'; ?>			
+			echo esc_html__( 'uses an option', 'wpglobus-translate-options' ) . '&nbsp;<strong>' . $themes['parent']['themeModsOption'] . '</strong>'; ?>
 		</div><?php
 	}	?>
 	<div><?php
-		$_piece = esc_html__( 'опции темы', 'wpglobus-translate-options' );
+		$_piece = esc_html__( 'theme options', 'wpglobus-translate-options' );
 		if ( $themes['child'] ) {
-			$_piece = esc_html__( 'опций тем', 'wpglobus-translate-options' );
+			$_piece = esc_html__( 'theme options', 'wpglobus-translate-options' );
 		}
 		echo sprintf( 
-			esc_html__( 'Мы рекомендуем активировать использование %1$s для перевода (см. таблицу)', 'wpglobus-translate-options' ),
+			esc_html__( 'We recommend using %1$s for translation (see the table)', 'wpglobus-translate-options' ),
 			$_piece
 		) ?>
 	</div><?php
