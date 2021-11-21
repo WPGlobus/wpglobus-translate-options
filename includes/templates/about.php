@@ -59,7 +59,7 @@ $themes = $this->args['themes'];
 		</div><?php
 	}	?>
 	<div><?php
-		$_piece = esc_html__( 'theme options', 'wpglobus-translate-options' );
+		$_piece = esc_html__( 'theme option', 'wpglobus-translate-options' );
 		if ( $themes['child'] ) {
 			$_piece = esc_html__( 'theme options', 'wpglobus-translate-options' );
 		}
