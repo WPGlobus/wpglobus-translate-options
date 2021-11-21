@@ -6,8 +6,8 @@ _wp_session
 _wc_session
 _wpcf
 _aioseo_
-aioseop_
 acf
+aioseop_
 db_upgraded
 jetpack_
 p3
@@ -22,3 +22,10 @@ wpglobus_
 _wpglobus_
 wpglobus-
 wpgupd
+wpseo
+qtranslate_
+_elementor
+elementor_
+sidebars_widgets
+auto_update_core_
+wc_blocks_

@@ -1,0 +1,45 @@
+{
+	"blogdescription": {
+		"editable": true
+	},
+	"blogname": {
+		"editable": false
+	},
+	"_transient_": {
+		"editable": false
+	},
+	"_site_transient": {
+		"editable": false
+	},
+	"_wpcf": {},
+	"_aioseo_": {
+		"editable": false
+	},
+	"aioseop_": {
+		"editable": false
+	},
+	"_wp_session": {},
+	"_wc_session": {},
+	"acf": {},
+	"db_upgraded": {},
+	"jetpack_": {},
+	"p3": {},
+	"pa_": {},
+	"redux": {},
+	"theme_switched": {},
+	"widget_": {},
+	"woocommerce_": {},
+	"woothemes-our-team-": {},
+	"wpcf": {},
+	"wpglobus_": {},
+	"_wpglobus_": {},
+	"wpglobus-": {},
+	"wpgupd": {},
+	"wpseo": {},
+	"qtranslate_": {},
+	"_elementor": {},
+	"elementor_": {},
+	"sidebars_widgets": {
+		"editable": false
+	}
+}
