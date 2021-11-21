@@ -62,6 +62,9 @@ Please check out the [WPGlobus Website](https://wpglobus.com/extensions-archive/
 
 ## Changelog ##
 
+### 2.0.0 ###
+* New admin interface.
+
 ### 1.9.0 ###
 * Revised code.
 
