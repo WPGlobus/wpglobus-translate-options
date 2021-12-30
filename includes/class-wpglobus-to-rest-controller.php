@@ -256,7 +256,6 @@ class WP_REST_WPGlobus_TO_Controller extends WP_REST_Controller {
 
 		/**
 		 * wp-json/wpglobus-to/v1/options/translateit
-		 * This is LAST route.
 		 */
 		$ep = $this->get_endpoint('translateIt'); 
 
@@ -289,15 +288,48 @@ class WP_REST_WPGlobus_TO_Controller extends WP_REST_Controller {
 				)
 			);
 		}
+
+		/**
+		 * wp-json/wpglobus-to/v1/options//\S+/
+		 * @since 2.1.0 @W.I.P
+		 */
+		/* 
+		$ep = $this->get_endpoint('getOption'); 
+
+		if ( $ep && 
+			 $this->is_regexp($ep['route']) && 
+			 is_callable($ep['readable_callback'], true, $callback) 
+		) {		
 		
+			register_rest_route(
+				$this->namespace,
+				$this->rest_base . '/' . $ep['route'],
+				array(
+					array(
+						'methods'             => WP_REST_Server::READABLE,
+						'callback'            => array( $this, 'get_option_value' ),	// 'get_option_value'
+						'permission_callback' => array( $this, 'get_permissions_check' ),
+						'args'                => $this->get_collection_params(),
+					),
+					#array(
+					#	'methods'             => WP_REST_Server::CREATABLE,
+					#	'callback'            => array( $this, 'create_item' ),
+					#	'permission_callback' => array( $this, 'create_item_permissions_check' ),
+					#	'args'                => $this->get_endpoint_args_for_item_schema(),
+					#),
+					#'allow_batch' => array( 'v1' => true ),
+					#'schema'      => array( $this, 'get_public_item_schema' ),
+				)
+			);
+		}		
+		// */
 		
 		$file = $this->get_mask_file(true);
 
 		$masks = array();
 		
-		
 		/**
-		 * @W.I.P
+		 * @since 2.0.0. @W.I.P
 		 */
 		/* 
 		if ( file_exists($file) ) {
@@ -314,6 +346,24 @@ class WP_REST_WPGlobus_TO_Controller extends WP_REST_Controller {
 		// */		
 	}
 
+	/**
+	 * @since 2.1.0 @W.I.P
+	 */
+	/* 
+	public function is_regexp( $regexp = '' ) {
+		
+		if ( empty($regexp) || strlen($regexp) < 3 ) {
+			return false;
+		}
+		
+		if( $regexp[0] == '/' && $regexp[ strlen($regexp)-1 ] == '/' ) {
+			return true;
+		}
+		
+		return false;
+	}
+	// */
+	
 	/**
 	 * Get option `interface_version`.	 
 	 *
@@ -486,30 +536,28 @@ class WP_REST_WPGlobus_TO_Controller extends WP_REST_Controller {
 	}
 
 	/**
-	 * Get theme options.	 
+	 * Get active theme options or both child and parent theme options.
 	 *
-	 * @since 2.0.0
-	 *
-	 * @param WP_REST_Request $request Request object.
-	 *
-	 * @return WP_REST_Response Response object.
-	 */	
-	public function get_theme_options( $request ) {
+	 * @since 2.1.0
+	 */
+	protected function get_active_theme_options() {
 		
-		$response = $this->get_response_schema();
-
+		static $options = null;
+		if ( ! is_null($options) ) {
+			return $options;
+		}
+		
 		global $wpdb;
 		
 		$themes = $this->args['themes'];
 
-		
 		$_option_names = array();
 		foreach( $themes as $theme=>$param ) {
 			if ( ! empty( $param['themeModsOption'] ) ) {
-				$_option_names[] = '"'.$param['themeModsOption'].'"';
+				$_option_names[$theme] = '"'.$param['themeModsOption'].'"';
 			}
 		}
-
+		
 		$_options = false;
 		
 		if ( ! empty( $_option_names ) ) {
@@ -521,18 +569,48 @@ class WP_REST_WPGlobus_TO_Controller extends WP_REST_Controller {
 			);		
 		}
 
-		$response['themes'] = $themes;
+		foreach( $_option_names as $_theme => $_option_name ) {
+			foreach( $_options as $_key=>$_option ) {
+				if ( '"' . $_option->option_name . '"' == $_option_name ) {
+					$_options[$_key]->theme = $_theme;
+					break;
+				}
+			}
+		}
+
+		$options = $_options;
+		unset($_options);
 		
-		if ( ! $_options ) {
+		return $options;	
+	}
+	
+	/**
+	 * Get theme options.	 
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param WP_REST_Request $request Request object.
+	 *
+	 * @return WP_REST_Response Response object.
+	 */	
+	public function get_theme_options( $request ) {
+		
+		$response = $this->get_response_schema();
+		
+		$response['themes'] = $this->args['themes'];
+		
+		$theme_options = $this->get_active_theme_options();
+		
+		if ( ! $theme_options ) {
 			
 			$response['response'] = 'error';
-			$response['message'] = 'No theme options in DB table found.';
+			$response['message'] = 'No theme options found.';
 		
 		} else {
 
 			$response['response'] = 'ok';
 			$response['message'] = '';
-			foreach( $_options as $key=>$option ) {
+			foreach( $theme_options as $key=>$option ) {
 				$response['data'][$key] = $this->prepare_item_for_response( $option, $request );
 			}
 		}
@@ -644,7 +722,7 @@ class WP_REST_WPGlobus_TO_Controller extends WP_REST_Controller {
 			
 			$_options = $wpdb->get_results( 
 				"SELECT * FROM {$wpdb->prefix}options AS opt WHERE opt.option_name IN ( $option_names )"
-			);		
+			);
 
 			if ( empty($_options) ) {
 				
@@ -660,6 +738,19 @@ class WP_REST_WPGlobus_TO_Controller extends WP_REST_Controller {
 			}
 		}
 
+		return rest_ensure_response( $data );		
+	}
+	
+	/**
+	 * @since 2.1.0 @W.I.P
+	 */
+	public function get_option_value( $request ) {
+		$data = $this->get_response_schema();
+		$data['message']  = 'Test message';
+		
+		// $body = json_decode( $request->get_body() );
+		// error_log( print_r( $body, true ) );
+		
 		return rest_ensure_response( $data );		
 	}
 	
@@ -697,7 +788,7 @@ class WP_REST_WPGlobus_TO_Controller extends WP_REST_Controller {
 			$i = 0;
 			
 			foreach( $options as $key=>$option ) {
-				// !!!!!!
+
 				$_add_item = true;
 
 				if ( array_key_exists( $option->option_name, $disabled_options ) ) { 
@@ -767,8 +858,8 @@ class WP_REST_WPGlobus_TO_Controller extends WP_REST_Controller {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param stdClass Object $option  		Option object.
-	 * @param WP_REST_Request $request 		Request object.
+	 * @param stdClass Object $option  Option object.
+	 * @param WP_REST_Request $request Request object.
 
 	 * @return array.
 	 */
@@ -780,8 +871,48 @@ class WP_REST_WPGlobus_TO_Controller extends WP_REST_Controller {
 		$item['option_name'] = $option->option_name;
 		// $item['option_value'] = substr( $option->option_value, 0, 30 ); @W.I.P @since 2.0.0
 		$item['hasMLString'] = WPGlobus_Core::has_translations($option->option_value);
-		$item[ 'translateIt' ] = in_array( $option->option_name, $this->options[ $this->get_arg('to_translate_key', 'option_keys') ] ) ? true : false;
 		
+		if ( empty( $this->options[ $this->get_arg('to_translate_key', 'option_keys') ] ) ) {
+			
+			$item[ 'translateIt' ] = false;
+		
+		} else {
+			
+			$item[ 'translateIt' ] = in_array(
+				$option->option_name, 
+				$this->options[ $this->get_arg('to_translate_key', 'option_keys') ] 
+			) ? true : false;
+		
+		}
+
+		$theme_options = $this->get_active_theme_options();
+		
+		if ( count($theme_options) == 2 ) {
+			
+			/**
+			 * We have parent and child themes.
+			 */
+			$item['themeStatus'] = false;
+			foreach( $theme_options as $theme_option ) {
+				if ( $option->option_name == $theme_option->option_name ) {
+					$item['themeStatus'] = $theme_option->theme;
+				}
+			}	
+	
+		} else {
+			
+			/**
+			 * We have 1 active theme.
+			 */
+			$item['themeStatus'] = false;
+			foreach( $theme_options as $theme_option ) {
+				if ( $option->option_name == $theme_option->option_name ) {
+					$item['themeStatus'] = 'active';
+				}
+			}				 
+			
+		}
+
 		return $item;
 	}
 	
@@ -794,14 +925,6 @@ class WP_REST_WPGlobus_TO_Controller extends WP_REST_Controller {
 	 * @return true|WP_Error True if the request has read access, WP_Error object otherwise.
 	 */
 	public function get_permissions_check( $request ) {
-		
-		/*
-		if ( defined('WPGLOBUS_TO_DEV') && WPGLOBUS_TO_DEV ) {
-			if ( ! empty($_SERVER['HTTP_ORIGIN']) && false !== strpos( $_SERVER['HTTP_ORIGIN'], 'localhost' ) ) {
-				return true;
-			}
-		}
-		// */
 		
 		if ( user_can( $this->current_user, 'manage_options' ) ) {
 			return true;
