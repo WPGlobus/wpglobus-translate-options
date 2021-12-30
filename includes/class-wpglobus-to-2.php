@@ -390,8 +390,12 @@ if ( ! class_exists( 'WPGlobus_Translate_Options_2' ) ) :
 					'route' => 'switchInterface',
 					'readable_callback' => 'get_option_interface_version', // 'get_option_interface_version',
 					'editable_callback' => 'update_option_interface_version' // 'update_option_interface_version',					
-					
-				)				
+				),
+				// 'getOption' => array(
+					// 'route' => 'getOptionValue',
+					// 'route' => '/\S+/',
+					// 'readable_callback' => 'get_option_value', // 'get_option_value'				
+				// )				
 			);
 			
 			return self::$endpoints;
@@ -432,7 +436,7 @@ if ( ! class_exists( 'WPGlobus_Translate_Options_2' ) ) :
 					'nonce' 	  => wp_create_nonce( 'wpglobus_to_nonce' ),
 					'wpVersion'   => $wp_version,
 					'version'     => WPGLOBUS_TRANSLATE_OPTIONS_VERSION,
-					'phase'		  => 'production',
+					'mode'		  => 'production',
 					'homeUrl'	  => home_url(),
 					'namespace'   => $namespace,
 					'fullRoute'   => $full_route,
@@ -443,10 +447,8 @@ if ( ! class_exists( 'WPGlobus_Translate_Options_2' ) ) :
 					self::OPTION_ALL_OPTIONS_TABLE_ITEMS_PER_PAGE => $this->get_option(self::OPTION_ALL_OPTIONS_TABLE_ITEMS_PER_PAGE, 25),
 					'optionsToTranslateTableItemsPerPage' => $this->get_option('optionsToTranslateTableItemsPerPage', 10),
 					'interfaceVersion' => $this->get_option('interface_version', '2'),
-					
 				);
 
-				// if ( defined('WPGLOBUS_TO_DEV') && WPGLOBUS_TO_DEV && defined('WPGLOBUS_TO_DEV_ASSETS_URL') && WPGLOBUS_TO_DEV_ASSETS_URL ) {
 				if ( defined('WPGLOBUS_TO_DEV_ASSETS_URL') && WPGLOBUS_TO_DEV_ASSETS_URL ) {
 					$app_css = WPGLOBUS_TO_DEV_ASSETS_URL . 'css/wpglobus-to-app.css';
 					$app_js  = WPGLOBUS_TO_DEV_ASSETS_URL . 'js/wpglobus-to-app.js';
