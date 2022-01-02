@@ -62,6 +62,9 @@ Please check out the [WPGlobus Website](https://wpglobus.com/extensions-archive/
 
 ## Changelog ##
 
+### 2.1.0 ###
+* The active theme options or the child and parent theme options are marked with a blue mark.
+
 ### 2.0.0 ###
 * New admin interface.
 
