@@ -9,7 +9,7 @@
  * Author: WPGlobus
  * Author URI: https://wpglobus.com/
  * Network: false
- * Copyright 2015-2021 Alex Gor (alexgff) / WPGlobus
+ * Copyright 2015-2022 Alex Gor (alexgff) / WPGlobus
  * License: GPL-3.0
  * License URI: http://www.gnu.org/licenses/gpl.txt
  */
