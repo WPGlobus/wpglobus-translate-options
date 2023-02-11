@@ -56,6 +56,9 @@ Please check out the [WPGlobus Website](https://wpglobus.com/extensions-archive/
 
 == Changelog ==
 
+= 2.2.0 =
+* Code cleanup and additional security measures.
+
 = 2.1.0 =
 * The active theme options or the child and parent theme options are marked with a blue mark.
 

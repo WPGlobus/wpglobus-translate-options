@@ -3,7 +3,7 @@
 **Donate link:** https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SLF8M4YNZHNQN  
 **Tags:** WPGlobus, localization, multilingual, translate, translation  
 **Requires at least:** 5.5  
-**Tested up to:** 6.1 
+**Tested up to:** 6.1  
 **Stable tag:** trunk  
 **Requires PHP:** 5.6  
 **License:** GPL-3.0-or-later  
@@ -61,6 +61,9 @@ Please check out the [WPGlobus Website](https://wpglobus.com/extensions-archive/
 
 
 ## Changelog ##
+
+### 2.2.0 ###
+* Code cleanup and additional security measures.
 
 ### 2.1.0 ###
 * The active theme options or the child and parent theme options are marked with a blue mark.
