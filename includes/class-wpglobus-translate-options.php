@@ -395,8 +395,9 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 
 			/** @todo These two vars are set inside a condition. Should refactor. */
 			$page = '';
-			$option = false;
-
+			// @since 2.2.0
+			$option = $this->safe_get_option();
+						
 			$tab_active = array();
 			$tab_active[self::TRANSLATE_OPTIONS_PAGE] = '';
 			$tab_active[self::THEME_PAGE] 		  	  = '';
@@ -406,37 +407,27 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 
 			if ( $pagenow == 'admin.php' && isset($_GET['page']) ) :
 
-				$page = $_GET['page'];
+				$page = WPGlobus_Utils::safe_get('page');
 
-				if ( self::TRANSLATE_OPTIONS_PAGE == $page  ) {
+				if ( self::TRANSLATE_OPTIONS_PAGE === $page  ) {
 
 					$tab_active[self::TRANSLATE_OPTIONS_PAGE] = ' nav-tab-active';
-					if ( isset($_GET['option']) ) {
 
-						$option = $_GET['option'];
-
-					} else {
-
-						$option = false;
-
-					}
-
-				} elseif ( self::SETTINGS_PAGE == $page  ) {
+				} elseif ( self::SETTINGS_PAGE === $page  ) {
 
 					$tab_active[self::SETTINGS_PAGE] = ' nav-tab-active';
 
-				} elseif ( self::ABOUT_PAGE == $page  ) {
+				} elseif ( self::ABOUT_PAGE === $page  ) {
 					
 					$tab_active[self::ABOUT_PAGE] = ' nav-tab-active';
 				
-				} elseif ( self::THEME_PAGE == $page  ) {
+				} elseif ( self::THEME_PAGE === $page  ) {
 					
 					$tab_active[self::THEME_PAGE] = ' nav-tab-active';
 					
 				}
 
 			endif;
-
 
 			if ( isset( $_POST['wpglobus_translate_form'] ) ) {
 
@@ -513,7 +504,7 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 						break;					
 					case self::TRANSLATE_OPTIONS_PAGE :	?>
 						<?php
-						if ( empty($_GET['option']) ) :
+						if ( ! $option ) :
 						?>
 							<div class="search">
 								<?php 
@@ -533,15 +524,20 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 							</div>
 						<?php
 						endif;
+
 						?>
 						<form method="post" id="options"> <?php
-
+							// @since 2.2.0
 							$search = false;
 							if ( ! empty( $_POST['search'] ) ) {
-								$search = $_POST['search'];
-								$option = '[]';
+								
+								$search = sanitize_text_field( $_POST['search'] );
+							
+								if ( ! empty($search) ) {
+									$option = '[]';
+								}
 							}
-
+							
 							if ( $option ) {
 
 								$show_source = false;
@@ -861,7 +857,6 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 				wp_enqueue_style( 'wpglobus-translate-options' );
 
 			endif;
-
 		}
 
 		/**
@@ -888,8 +883,21 @@ if ( ! class_exists( 'WPGlobus_Translate_Options' ) ) :
 				wp_enqueue_script( 'wpglobus-translate-options' );
 
 			endif;
-
 		}
+
+		/**
+		 * Get value of $_GET['option'].
+		 *
+		 * @since 2.2.0
+		 */
+		protected function safe_get_option() {
+			$option = WPGlobus_Utils::safe_get('option');
+			if ( $option === '' ) {
+				return false;
+			}
+			return $option;
+		}
+		
 	}
 		
 endif; // class WPGlobus_Translate_Options.
